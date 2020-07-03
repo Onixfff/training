@@ -28,7 +28,7 @@ namespace Переменные
             // Строковые
             string str = "Привет, мир!";
             // Логические
-            bool bl = false; // true или false;
+            bool bl = false; // true или false;   
         }
     }
 }
