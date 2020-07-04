@@ -10,13 +10,13 @@ namespace Basics_of_programming_number_3
     {
         static void Main(string[] args)
         {
-            int ряд = 3;
+            int row = 3;
             int картинки = 52;
             Console.WriteLine("Сколько рядов хотите вывести?");
-            int скролькоРяд = Convert.ToInt32(Console.ReadLine());
-            int t = ряд * скролькоРяд;
-            int НеНадоКартинок = картинки - t;
-            Console.WriteLine($"Выведется {t} картинок и {НеНадоКартинок} не появится на экране");
+            int howmanyrows = Convert.ToInt32(Console.ReadLine());
+            int NumberofPicturesOnScreen = row *howmanyrows;
+            int НеНадоКартинок = картинки - NumberofPicturesOnScreen;
+            Console.WriteLine($"Выведется {NumberofPicturesOnScreen} картинок и {НеНадоКартинок} не появится на экране");
             Console.ReadKey();
         }
     }
