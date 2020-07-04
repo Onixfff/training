@@ -12,7 +12,6 @@ namespace Basics_of_programming_number_3
         {
             int crystals;
             int gold;
-            string choice;
             Console.WriteLine("Введите какое кол-во gold у вас есть:");
             gold = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("купить crystals по цене 2 gold = 1 crystals");
