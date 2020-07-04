@@ -1,0 +1,7 @@
+F:\Проекты\Проекты c#\ЯЮниор\repository\Basics of programming number 2\bin\Debug\Basics of programming number 2.exe.config
+F:\Проекты\Проекты c#\ЯЮниор\repository\Basics of programming number 2\bin\Debug\Basics of programming number 2.exe
+F:\Проекты\Проекты c#\ЯЮниор\repository\Basics of programming number 2\bin\Debug\Basics of programming number 2.pdb
+F:\Проекты\Проекты c#\ЯЮниор\repository\Basics of programming number 2\obj\Debug\Basics of programming number 2.csprojAssemblyReference.cache
+F:\Проекты\Проекты c#\ЯЮниор\repository\Basics of programming number 2\obj\Debug\Basics of programming number 2.csproj.CoreCompileInputs.cache
+F:\Проекты\Проекты c#\ЯЮниор\repository\Basics of programming number 2\obj\Debug\Basics of programming number 2.exe
+F:\Проекты\Проекты c#\ЯЮниор\repository\Basics of programming number 2\obj\Debug\Basics of programming number 2.pdb

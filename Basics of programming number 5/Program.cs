@@ -19,8 +19,9 @@ namespace Basics_of_programming_number_5
             queue = Convert.ToInt32(Console.ReadLine());
             wait = queue * time;
             hout = wait / 60;
-            min =  queue * 10 % 60; 
+            min =  queue * 10 % 60;
             Console.WriteLine($"Вы должны отстоять в очереди {hout} часов и {min} минут.");
+            //Console.WriteLine($"Вы должны отстоять в очереди {wait} часа и {wait} минут.");
             Console.ReadKey();
         }
     }

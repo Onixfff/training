@@ -1,0 +1,6 @@
+F:\Проекты\Проекты c#\ЯЮниор\Basics of programming number 6\bin\Debug\Basics of programming number 6.exe.config
+F:\Проекты\Проекты c#\ЯЮниор\Basics of programming number 6\bin\Debug\Basics of programming number 6.exe
+F:\Проекты\Проекты c#\ЯЮниор\Basics of programming number 6\bin\Debug\Basics of programming number 6.pdb
+F:\Проекты\Проекты c#\ЯЮниор\Basics of programming number 6\obj\Debug\Basics of programming number 6.csproj.CoreCompileInputs.cache
+F:\Проекты\Проекты c#\ЯЮниор\Basics of programming number 6\obj\Debug\Basics of programming number 6.exe
+F:\Проекты\Проекты c#\ЯЮниор\Basics of programming number 6\obj\Debug\Basics of programming number 6.pdb

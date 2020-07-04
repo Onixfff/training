@@ -1,0 +1,7 @@
+F:\Проекты\Проекты c#\ЯЮниор\Basics of programming number 5\bin\Debug\Basics of programming number 5.exe.config
+F:\Проекты\Проекты c#\ЯЮниор\Basics of programming number 5\bin\Debug\Basics of programming number 5.exe
+F:\Проекты\Проекты c#\ЯЮниор\Basics of programming number 5\bin\Debug\Basics of programming number 5.pdb
+F:\Проекты\Проекты c#\ЯЮниор\Basics of programming number 5\obj\Debug\Basics of programming number 5.csprojAssemblyReference.cache
+F:\Проекты\Проекты c#\ЯЮниор\Basics of programming number 5\obj\Debug\Basics of programming number 5.csproj.CoreCompileInputs.cache
+F:\Проекты\Проекты c#\ЯЮниор\Basics of programming number 5\obj\Debug\Basics of programming number 5.exe
+F:\Проекты\Проекты c#\ЯЮниор\Basics of programming number 5\obj\Debug\Basics of programming number 5.pdb
