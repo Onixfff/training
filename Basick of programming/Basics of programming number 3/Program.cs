@@ -11,12 +11,12 @@ namespace Basics_of_programming_number_3
         static void Main(string[] args)
         {
             int row = 3;
-            int картинки = 52;
+            int pictures = 52;
             Console.WriteLine("Сколько рядов хотите вывести?");
             int howmanyrows = Convert.ToInt32(Console.ReadLine());
             int NumberofPicturesOnScreen = row *howmanyrows;
-            int НеНадоКартинок = картинки - NumberofPicturesOnScreen;
-            Console.WriteLine($"Выведется {NumberofPicturesOnScreen} картинок и {НеНадоКартинок} не появится на экране");
+            int NopicturesNeeded = pictures - NumberofPicturesOnScreen;
+            Console.WriteLine($"Выведется {NumberofPicturesOnScreen} картинок и {NopicturesNeeded} не появится на экране");
             Console.ReadKey();
         }
     }
