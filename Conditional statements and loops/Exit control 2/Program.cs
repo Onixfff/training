@@ -10,7 +10,7 @@ namespace Exit_control
     {
         static void Main(string[] args)
         {
-            string exit = "";
+            string exit;
             do
             {
                 Console.WriteLine("Введите слово exit");
