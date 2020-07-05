@@ -1,0 +1,7 @@
+F:\Проекты\Проекты c#\ЯЮниор\Exit control\bin\Debug\Exit control.exe.config
+F:\Проекты\Проекты c#\ЯЮниор\Exit control\bin\Debug\Exit control.exe
+F:\Проекты\Проекты c#\ЯЮниор\Exit control\bin\Debug\Exit control.pdb
+F:\Проекты\Проекты c#\ЯЮниор\Exit control\obj\Debug\Exit control.csprojAssemblyReference.cache
+F:\Проекты\Проекты c#\ЯЮниор\Exit control\obj\Debug\Exit control.csproj.CoreCompileInputs.cache
+F:\Проекты\Проекты c#\ЯЮниор\Exit control\obj\Debug\Exit control.exe
+F:\Проекты\Проекты c#\ЯЮниор\Exit control\obj\Debug\Exit control.pdb
