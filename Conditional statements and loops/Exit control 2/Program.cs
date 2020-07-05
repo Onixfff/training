@@ -15,7 +15,7 @@ namespace Exit_control
             {
                 Console.WriteLine("Введите слово exit");
                 exit = Console.ReadLine();
-            } while (exit != "exit");
+            } while (exit != "exit" && exit != "Exit");
 
             Console.WriteLine("Цикл закончился");
             Console.ReadKey();
