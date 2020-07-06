@@ -13,13 +13,17 @@ namespace Basics_of_programming_number_3
             int row = 3;
             int pictures = 52;
             bool enoughPictutes;
+            int howManyRows;
+            int NumberOfPicturesOnScreen;
+            int NopicturesNeeded;
+            
             Console.WriteLine("Сколько рядов хотите вывести?");
-            int howmanyrows = Convert.ToInt32(Console.ReadLine());
+            howManyRows = Convert.ToInt32(Console.ReadLine());
             enoughPictutes = pictures >= row * howmanyrows;
-            howmanyrows *= Convert.ToInt32(enoughPictutes);
-            int NumberofPicturesOnScreen = row *howmanyrows;
-            int NopicturesNeeded = pictures - NumberofPicturesOnScreen;
-            Console.WriteLine($"Выведется {NumberofPicturesOnScreen} картинок и {NopicturesNeeded} не появится на экране");
+            howManyRows *= Convert.ToInt32(enoughPictutes);
+            NumberOfPicturesOnScreen = row * howManyRows;
+            NopicturesNeeded = pictures - NumberOfPicturesOnScreen;
+            Console.WriteLine($"Выведется {NumberOfPicturesOnScreen} картинок и {NopicturesNeeded} не появится на экране");
             Console.ReadKey();
         }
     }
