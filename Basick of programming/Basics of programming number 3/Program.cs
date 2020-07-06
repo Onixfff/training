@@ -15,15 +15,15 @@ namespace Basics_of_programming_number_3
             bool enoughPictutes;
             int howManyRows;
             int NumberOfPicturesOnScreen;
-            int NopicturesNeeded;
+            int NoPicturesNeeded;
             
             Console.WriteLine("Сколько рядов хотите вывести?");
             howManyRows = Convert.ToInt32(Console.ReadLine());
             enoughPictutes = pictures >= row * howmanyrows;
             howManyRows *= Convert.ToInt32(enoughPictutes);
             NumberOfPicturesOnScreen = row * howManyRows;
-            NopicturesNeeded = pictures - NumberOfPicturesOnScreen;
-            Console.WriteLine($"Выведется {NumberOfPicturesOnScreen} картинок и {NopicturesNeeded} не появится на экране");
+            NoPicturesNeeded = pictures - NumberOfPicturesOnScreen;
+            Console.WriteLine($"Выведется {NumberOfPicturesOnScreen} картинок и {NoPicturesNeeded} не появится на экране");
             Console.ReadKey();
         }
     }
