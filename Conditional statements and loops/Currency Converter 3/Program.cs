@@ -56,16 +56,18 @@ namespace Basics_of_programming_number_6
                                 Console.WriteLine($"Обмен рублей на доллары. У вас {rub} рублей.");
                                 Console.Write("Сколько вы хотите поменять рублей:");
                                 ExchangeMoney = Convert.ToSingle(Console.ReadLine());
-                                ExchangeMoney = usd + (rub / rubInUsd);
-                                rub -= ExchangeMoney ;
+                                usd += ExchangeMoney / rubInUsd;
+                                rub -= ExchangeMoney;
                                 Console.WriteLine($"После обмена у вас осталось {rub} рублей, {usd} долларов и {eur} евро на вашем счету.");
                                 break;
 
                             case "2":
                                 Console.WriteLine();
-                                Console.WriteLine("Обмен рублей на евро");
-                                eur += rub / rubInEur;
-                                rub -= rub;
+                                Console.WriteLine($"Обмен рублей на евро. У вас {rub} рублей.");
+                                Console.Write("Сколько вы хотите поменять рублей:");
+                                ExchangeMoney = Convert.ToSingle(Console.ReadLine());
+                                eur += ExchangeMoney / rubInEur;
+                                rub -= ExchangeMoney;
                                 Console.WriteLine($"После обмена у вас осталось {rub} рублей, {usd} долларов и {eur} евро на вашем счету.");
                                 break;
 
@@ -87,17 +89,21 @@ namespace Basics_of_programming_number_6
                         {
                             case "1":
                                 Console.WriteLine();
-                                Console.WriteLine("Обмен долларов на рубли");
-                                rub += usd * usdInRub;
-                                usd -= usd;
+                                Console.WriteLine($"Обмен долларов на рубли. У вас {usd} долларов.");
+                                Console.Write("Сколько вы хотите поменять долларов:");
+                                ExchangeMoney = Convert.ToSingle(Console.ReadLine());
+                                rub += ExchangeMoney * usdInRub;
+                                usd -= ExchangeMoney;
                                 Console.WriteLine($"После обмена у вас осталось {rub} рублей, {usd} долларов и {eur} евро на вашем счету.");
                                 break;
 
                             case "2":
                                 Console.WriteLine();
-                                Console.WriteLine("Обмен долларов на евро");
-                                eur += usd * usdInEur;
-                                usd -= usd;
+                                Console.WriteLine($"Обмен долларов на евро. У вас {usd} долларов.");
+                                Console.Write("Сколько вы хотите поменять долларов:");
+                                ExchangeMoney = Convert.ToSingle(Console.ReadLine());
+                                eur += ExchangeMoney * usdInEur;
+                                usd -= ExchangeMoney;
                                 Console.WriteLine($"После обмена у вас осталось {rub} рублей, {usd} долларов и {eur} евро на вашем счету.");
                                 break;
 
@@ -119,17 +125,21 @@ namespace Basics_of_programming_number_6
                         {
                             case "1":
                                 Console.WriteLine();
-                                Console.WriteLine("Обмен евро на рубли");
-                                rub += eur * eurInRub;
-                                eur -= eur;
+                                Console.WriteLine($"Обмен евро на рубли. У вас {eur} евро.");
+                                Console.Write("Сколько вы хотите поменять евро:");
+                                ExchangeMoney = Convert.ToSingle(Console.ReadLine());
+                                rub += ExchangeMoney * eurInRub;
+                                eur -= ExchangeMoney;
                                 Console.WriteLine($"После обмена у вас осталось {rub} рублей, {usd} долларов и {eur} евро на вашем счету.");
                                 break;
 
                             case "2":
                                 Console.WriteLine();
-                                Console.WriteLine("Обмен евро на доллары");
-                                usd += eur * eurInUsd;
-                                eur -= eur;
+                                Console.WriteLine($"Обмен евро на доллары. У вас {eur} евро.");
+                                Console.Write("Сколько вы хотите поменять евро:");
+                                ExchangeMoney = Convert.ToSingle(Console.ReadLine());
+                                usd += ExchangeMoney * eurInUsd;
+                                eur -= ExchangeMoney;
                                 Console.WriteLine($"После обмена у вас осталось {rub} рублей, {usd} долларов и {eur} евро на вашем счету.");
                                 break;
 
