@@ -16,6 +16,8 @@ namespace Basics_of_programming_number_6
             float usd;
             float eur;
             string userInput;
+            float ExchangeMoney;
+
 
             Console.WriteLine("Добро пожаловать в нашь обменник.");
             Console.WriteLine("Здесь вы сможете обменять свои рубли на долары, рубли на евро, "
@@ -51,9 +53,11 @@ namespace Basics_of_programming_number_6
                         {
                             case "1":
                                 Console.WriteLine();
-                                Console.WriteLine("Обмен рублей на доллары");
-                                usd += rub / rubInUsd;
-                                rub -= rub;
+                                Console.WriteLine($"Обмен рублей на доллары. У вас {rub} рублей.");
+                                Console.Write("Сколько вы хотите поменять рублей:");
+                                ExchangeMoney = Convert.ToSingle(Console.ReadLine());
+                                ExchangeMoney = usd + (rub / rubInUsd);
+                                rub -= ExchangeMoney ;
                                 Console.WriteLine($"После обмена у вас осталось {rub} рублей, {usd} долларов и {eur} евро на вашем счету.");
                                 break;
 
