@@ -1,0 +1,7 @@
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\currency Converter 3\bin\Debug\currency Converter 3.exe.config
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\currency Converter 3\bin\Debug\currency Converter 3.exe
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\currency Converter 3\bin\Debug\currency Converter 3.pdb
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\currency Converter 3\obj\Debug\currency Converter 3.csprojAssemblyReference.cache
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\currency Converter 3\obj\Debug\currency Converter 3.csproj.CoreCompileInputs.cache
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\currency Converter 3\obj\Debug\currency Converter 3.exe
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\currency Converter 3\obj\Debug\currency Converter 3.pdb

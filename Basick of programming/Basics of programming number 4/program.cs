@@ -18,7 +18,7 @@ namespace Basics_of_programming_number_3
             Console.WriteLine("купить crystals по цене 2 gold = 1 crystals");
             Console.ReadKey();
             crystals = gold / price;
-            gold -= (crystals * price);
+            gold -= crystals * price;
             Console.WriteLine($"Вы смогли купить {crystals} crystals и у вас осталось {gold} gold");
             Console.ReadKey();
         }
