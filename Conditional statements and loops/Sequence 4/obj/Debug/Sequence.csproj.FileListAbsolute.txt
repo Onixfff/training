@@ -1,0 +1,7 @@
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\Sequence 4\bin\Debug\Sequence.exe.config
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\Sequence 4\bin\Debug\Sequence.exe
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\Sequence 4\bin\Debug\Sequence.pdb
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\Sequence 4\obj\Debug\Sequence.csprojAssemblyReference.cache
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\Sequence 4\obj\Debug\Sequence.csproj.CoreCompileInputs.cache
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\Sequence 4\obj\Debug\Sequence.exe
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\Sequence 4\obj\Debug\Sequence.pdb
