@@ -1,0 +1,14 @@
+F:\Проекты\Проекты c#\ЯЮниор\Conditional statements and loops\input Name\bin\Debug\input Name.exe.config
+F:\Проекты\Проекты c#\ЯЮниор\Conditional statements and loops\input Name\bin\Debug\input Name.exe
+F:\Проекты\Проекты c#\ЯЮниор\Conditional statements and loops\input Name\bin\Debug\input Name.pdb
+F:\Проекты\Проекты c#\ЯЮниор\Conditional statements and loops\input Name\obj\Debug\input Name.csprojAssemblyReference.cache
+F:\Проекты\Проекты c#\ЯЮниор\Conditional statements and loops\input Name\obj\Debug\input Name.csproj.CoreCompileInputs.cache
+F:\Проекты\Проекты c#\ЯЮниор\Conditional statements and loops\input Name\obj\Debug\input Name.exe
+F:\Проекты\Проекты c#\ЯЮниор\Conditional statements and loops\input Name\obj\Debug\input Name.pdb
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\input Name\bin\Debug\input Name.exe.config
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\input Name\bin\Debug\input Name.exe
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\input Name\bin\Debug\input Name.pdb
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\input Name\obj\Debug\input Name.csprojAssemblyReference.cache
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\input Name\obj\Debug\input Name.csproj.CoreCompileInputs.cache
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\input Name\obj\Debug\input Name.exe
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\input Name\obj\Debug\input Name.pdb

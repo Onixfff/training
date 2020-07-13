@@ -5,3 +5,10 @@ F:\Проекты\Проекты c#\ЯЮниор\Conditional statements and loop
 F:\Проекты\Проекты c#\ЯЮниор\Conditional statements and loops\#1\Mastering cycles\obj\Debug\Mastering cycles.csproj.CoreCompileInputs.cache
 F:\Проекты\Проекты c#\ЯЮниор\Conditional statements and loops\#1\Mastering cycles\obj\Debug\Mastering cycles.exe
 F:\Проекты\Проекты c#\ЯЮниор\Conditional statements and loops\#1\Mastering cycles\obj\Debug\Mastering cycles.pdb
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\Mastering cycles 1\bin\Debug\Mastering cycles.exe.config
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\Mastering cycles 1\bin\Debug\Mastering cycles.exe
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\Mastering cycles 1\bin\Debug\Mastering cycles.pdb
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\Mastering cycles 1\obj\Debug\Mastering cycles.csprojAssemblyReference.cache
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\Mastering cycles 1\obj\Debug\Mastering cycles.csproj.CoreCompileInputs.cache
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\Mastering cycles 1\obj\Debug\Mastering cycles.exe
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\Mastering cycles 1\obj\Debug\Mastering cycles.pdb
