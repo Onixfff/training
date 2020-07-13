@@ -1,0 +1,14 @@
+F:\Проекты\Проекты c#\ЯЮниор\Conditional statements and loops\Console menu\obj\Debug\Console menu.csprojAssemblyReference.cache
+F:\Проекты\Проекты c#\ЯЮниор\Conditional statements and loops\Console menu\obj\Debug\Console menu.csproj.CoreCompileInputs.cache
+F:\Проекты\Проекты c#\ЯЮниор\Conditional statements and loops\Console menu\bin\Debug\Console menu.exe.config
+F:\Проекты\Проекты c#\ЯЮниор\Conditional statements and loops\Console menu\bin\Debug\Console menu.exe
+F:\Проекты\Проекты c#\ЯЮниор\Conditional statements and loops\Console menu\bin\Debug\Console menu.pdb
+F:\Проекты\Проекты c#\ЯЮниор\Conditional statements and loops\Console menu\obj\Debug\Console menu.exe
+F:\Проекты\Проекты c#\ЯЮниор\Conditional statements and loops\Console menu\obj\Debug\Console menu.pdb
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\Console menu\bin\Debug\Console menu.exe.config
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\Console menu\bin\Debug\Console menu.exe
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\Console menu\bin\Debug\Console menu.pdb
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\Console menu\obj\Debug\Console menu.csprojAssemblyReference.cache
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\Console menu\obj\Debug\Console menu.csproj.CoreCompileInputs.cache
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\Console menu\obj\Debug\Console menu.exe
+F:\Проекты\Проекты c#\ЯЮниор\repository\Conditional statements and loops\Console menu\obj\Debug\Console menu.pdb
