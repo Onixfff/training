@@ -17,7 +17,7 @@ namespace input_Name
             Console.WriteLine("Введите символ");
             symbol = Convert.ToChar(Console.ReadLine());
 
-            for (int i = -1; i <= name.Length; i++)
+            for (int i = 0; i <= name.Length + 1; i++)
             {
                 Console.Write(symbol);
             }
