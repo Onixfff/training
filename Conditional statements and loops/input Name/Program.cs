@@ -12,6 +12,7 @@ namespace input_Name
         {
             string name;
             char symbol;
+
             Console.WriteLine("Введите имя");
             name = Console.ReadLine();
             Console.WriteLine("Введите символ");
@@ -23,7 +24,7 @@ namespace input_Name
             }
             Console.WriteLine();
             Console.WriteLine(symbol + name + symbol);
-            for (int i = -1; i <= name.Length; i++)
+            for (int i = 0; i <= name.Length + 1; i++)
             {
                 Console.Write(symbol);
             }
