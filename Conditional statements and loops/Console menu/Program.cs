@@ -25,8 +25,6 @@ namespace Console_menu
             
             do
             {
-                //Etc-Выход из программы
-
                 Console.WriteLine("Введите номер команды чтобы начать её");
                 Console.WriteLine("Команды: \n1 - Очистить консоль.\n2 - Покрасить консоль.\n3 - Изменить размер программы.\n4 - Сменить имя.\n5 - Сменить пароль.\n6 - Выйти из прогрограммы.");
                 Console.WriteLine();
@@ -36,7 +34,6 @@ namespace Console_menu
                     case "1":
                         Console.Clear();
                         break;
-
                     case "2":
                         Console.WriteLine();
                         Console.WriteLine("Консоль очистится");
@@ -49,13 +46,11 @@ namespace Console_menu
                                 Console.BackgroundColor = ConsoleColor.Red;
                                 Console.Clear();
                                 break;
-
                             case "2":
                                 Console.ForegroundColor = ConsoleColor.Black;
                                 Console.BackgroundColor = ConsoleColor.Cyan;
                                 Console.Clear();
                                 break;
-
                             case "3":
                                 Console.ForegroundColor = ConsoleColor.Black;
                                 Console.BackgroundColor = ConsoleColor.Magenta;
@@ -70,7 +65,6 @@ namespace Console_menu
                                 Console.WriteLine("Такого цвета нет");
                                 break;
                         }
-
                         break;
                     case "3":
                         Console.Write("Введите ширину: ");
@@ -80,7 +74,6 @@ namespace Console_menu
                         Console.Write("Введите высоту: ");
                         height = Convert.ToInt32(Console.ReadLine());
                         Console.WindowHeight = height;
-
                         break;
                     case "4":
                         for(int i = 3; i >= 0; i--)
@@ -142,7 +135,6 @@ namespace Console_menu
                             }
                         }
                         break;
-
                     default:
                         Console.WriteLine("Такой команды нет");
                         break;
