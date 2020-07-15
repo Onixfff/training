@@ -1,0 +1,7 @@
+F:\Проекты\Проекты c#\ЯЮниор\tasks locally\Conditional statements and loops\Boss fight 14\bin\Debug\Boss fight.exe.config
+F:\Проекты\Проекты c#\ЯЮниор\tasks locally\Conditional statements and loops\Boss fight 14\bin\Debug\Boss fight.exe
+F:\Проекты\Проекты c#\ЯЮниор\tasks locally\Conditional statements and loops\Boss fight 14\bin\Debug\Boss fight.pdb
+F:\Проекты\Проекты c#\ЯЮниор\tasks locally\Conditional statements and loops\Boss fight 14\obj\Debug\Boss fight.csprojAssemblyReference.cache
+F:\Проекты\Проекты c#\ЯЮниор\tasks locally\Conditional statements and loops\Boss fight 14\obj\Debug\Boss fight.csproj.CoreCompileInputs.cache
+F:\Проекты\Проекты c#\ЯЮниор\tasks locally\Conditional statements and loops\Boss fight 14\obj\Debug\Boss fight.exe
+F:\Проекты\Проекты c#\ЯЮниор\tasks locally\Conditional statements and loops\Boss fight 14\obj\Debug\Boss fight.pdb
