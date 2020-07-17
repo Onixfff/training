@@ -9,95 +9,130 @@ namespace Boss_fight
     class Program
     {
         static void Main(string[] args)
-        {
-            int health1, health2;
-            float damage1, damage2;
-            float protection1, protection2;
+        {   
+
+            float health1, health2, protection1, protection2;
+            int damage1, damage2;
+            bool devil = false;
+            int ShadowWord;
             string usingInput;
-            //string hero;
+
             Random random = new Random();
+
+            health1 = random.Next(90, 161);
+            protection1 = random.Next(30, 101);
+            damage1 = random.Next(1, 6);
+
+            health2 = random.Next(500, 1001);
+            protection2 = random.Next(76, 101);
+            damage2 = random.Next(20, 80);
+
+            Console.WriteLine("Enter ability to find out all abilities.");
+            usingInput = Console.ReadLine();
+            if (usingInput == "ability")
+            {
+                    Console.WriteLine("1-Shadow Word - hill on the hero or damage on the enemy = 100-130 damage or heal" +
+                    "\n2 - reborn - if xp fall to 0 they will be restored randomly 40-100 damage" +
+                    "\n3 - devil's exit - a gap in the floor opens and the devil comes out with damage on the hero = 10 - 20 damege, and on the enemy = 10 - 20 damege" +
+                    "\n4 - demon punishment - you order to inflict damage to the demon in your enemy = 100-300 damege" +
+                    "\n5 - staff strike - the magician beats with his staff = 1-6 damege");
+                    Console.ReadKey();
+                    Console.Clear();
+            }
+
+            Console.WriteLine();
+            Console.WriteLine($"Stats hero:\nhp1 - {health1}, damage1 - {damage1}.\n" +
+                          $"\nStats enemy:\nhp2 - {health2}, damage 2 - {damage2}.");
             do
             {
-                Console.WriteLine("Choose who you will play for: magician, swordsman.");
+                ShadowWord = random.Next(100, 131);
+                Console.WriteLine();
+                Console.WriteLine("Сhoose a spell:\n1 - Shadow Word.\n2 - reborn.\n3 - devil's exit.\n4 - demon punishment.\n5 - staff strike.");
+                Console.WriteLine();
                 usingInput = Console.ReadLine();
-                
-                
-                switch (usingInput) 
+                switch (usingInput)
                 {
-                    case "magician":
-
-                        //1 - ShadowWord = дамаг и хилл.
-                        //2 -
-
-                        Console.WriteLine("Enter ability to find out all abilities.");
-                        usingInput = Console.ReadLine();
-                        if(usingInput == "ability")
-                        {
-                            Console.WriteLine("abilities:1-ShadowWord - hill on the hero or damage on the enemy = (10 , 50)" +
-                            "\n2 - " +
-                            "\n3 - ");
-                            Console.ReadKey();
-                            Console.Clear();
-                        }
-                        int ShadowWord = random.Next(10,51);
-                        health1 = random.Next(50, 101);
-                        protection1 = random.Next(health1, 101);
-                        damage1 = random.Next(1, 6);
-
-                        health2 = random.Next(100, 501);
-                        protection2 = random.Next(health1, 101);
-                        damage2 = random.Next(20, 71);
-
-                        Console.WriteLine($"Stats hero:\nhp1 - {health1}, protection1 - {protection1}, damage1 - {damage1}.\n" +
-                                          $"\nStats enemy:\nhp2 - {health2}, protection2 - {protection2}, damage 2 - {damage2}.");
-
-                        Console.WriteLine();
-                        Console.WriteLine("Сhoose a spell:\n1 - ShadowWord.\n2 - ");
+                    case "1":
+                        Console.WriteLine("Shadow Word on 1 - yourself or the 2 - enemy");
                         usingInput = Console.ReadLine();
                         switch (usingInput)
                         {
                             case "1":
-                                Console.WriteLine("Shadow Word on yourself or the enemy");
-                                usingInput = Console.ReadLine();
-                                switch (usingInput)
-                                {
-                                    case "yourself":
-                                        health1 += ShadowWord;
-
-                                        Console.WriteLine($"Stats hero:\nhp1 - {health1}, protection1 - {protection1}, damage1 - {damage1}.\n" +
-                                          $"\nStats enemy:\nhp2 - {health2}, protection2 - {protection2}, damage 2 - {damage2}.");
-                                        break;
-
-                                    case "enemy":
-                                        health2 -= ShadowWord;
-
-                                        Console.WriteLine($"Stats hero:\nhp1 - {health1}, protection1 - {protection1}, damage1 - {damage1}.\n" +
-                                          $"\nStats enemy:\nhp2 - {health2}, protection2 - {protection2}, damage 2 - {damage2}.");
-                                        break;
-
-                                    default:
-                                        
-                                        break;
-                                }
-                                //Надо сделать чтобы shadowWord был или на себя или на enemy
-                                //ShadowWord = random.Next(10, 51);
-                                //health1 += ShadowWord;
+                                health1 += ShadowWord;
+                                break;
+                            case "2":
+                                health2 -= ShadowWord;
                                 break;
                             default:
-                                Console.WriteLine(" no such ability");
+                                Console.WriteLine("so you can’t use the ability");
+                                Console.ReadKey();
                                 break;
                         }
-
                         break;
-
-                    case "swordsman":
-                        int swordStrike;
-
+                    case "2":
+                        health1 -= Convert.ToSingle(damage2) / 100 * protection2;
+                        if (health1 <= 0)
+                        {
+                            health1 = random.Next(100, 181);
+                        }
+                        break;
+                    case "3":
+                        int devilesExit = random.Next(10, 20);
+                        if (devil == false)
+                        {
+                            health2 -= devilesExit;
+                            health1 -= devilesExit;
+                            devil = true;
+                        }
+                        else if (devil == true)
+                        {
+                            Console.WriteLine("you already called the demon");
+                        }
+                        break;
+                    case "4":
+                        if (devil == true)
+                        {
+                            int damage3;
+                            damage3 = random.Next(100, 300);
+                            health2 -= Convert.ToSingle(damage3) / 100 * protection2;
+                            Console.WriteLine("damage 3 - " + damage3);
+                        }
+                        else if (devil == false)
+                        {
+                            Console.WriteLine("you can not use this magic until the demon");
+                            Console.ReadKey();
+                        }
+                        break;
+                    case "5":
+                        health2 -= Convert.ToSingle(damage1) / 100 * protection2;
+                        break;
+                    default:
+                        Console.WriteLine(" no such ability");
                         break;
                 }
-                Console.WriteLine(" start over? yes or no");
-                usingInput = Console.ReadLine();
-            } while (usingInput != "no");
+                health1 -= Convert.ToSingle(damage2) / 100 * protection2;
+
+                Console.WriteLine();
+                Console.WriteLine($"Stats hero:\nhp1 - {health1}, damage1 - {damage1}.\n" +
+                              $"\nStats enemy:\nhp2 - {health2}, damage 2 - {damage2}.");
+
+            } while (health1 > 0 && health2 > 0);
+            
+            Console.WriteLine();
+            if (health1 <= 0 && health2 <= 0)
+
+            {
+                Console.WriteLine("draw");
+            }
+            else if (health1 <= 0)
+            {
+                Console.WriteLine("your hero fell");
+            }
+            else if (health2 <= 0)
+            {
+                Console.WriteLine("the enemy fell");
+            }
+            Console.ReadKey();
         }
     }
 }
