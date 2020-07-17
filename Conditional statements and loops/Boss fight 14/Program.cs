@@ -11,8 +11,8 @@ namespace Boss_fight
         static void Main(string[] args)
         {   
 
-            float health1, health2, protection1, protection2;
-            int damage1, damage2;
+            float healthHero, healthEnemy, protectionHero, protectionEnemy;
+            int damageHero, damageEnemy;
             bool devil = false;
             int ShadowWord;
             string usingInput;
@@ -41,8 +41,8 @@ namespace Boss_fight
             }
 
             Console.WriteLine();
-            Console.WriteLine($"Stats hero:\nhp1 - {health1}, damage1 - {damage1}.\n" +
-                          $"\nStats enemy:\nhp2 - {health2}, damage 2 - {damage2}.");
+            Console.WriteLine($"Stats hero:\nhp1 - {healthHero}, damage1 - {damageHero}.\n" +
+                          $"\nStats enemy:\nhp2 - {healthEnemy}, damage 2 - {damageEnemy}.");
             do
             {
                 ShadowWord = random.Next(100, 131);
@@ -58,10 +58,10 @@ namespace Boss_fight
                         switch (usingInput)
                         {
                             case "1":
-                                health1 += ShadowWord;
+                                healthHero += ShadowWord;
                                 break;
                             case "2":
-                                health2 -= ShadowWord;
+                                healthHero -= ShadowWord;
                                 break;
                             default:
                                 Console.WriteLine("so you can’t use the ability");
@@ -70,18 +70,18 @@ namespace Boss_fight
                         }
                         break;
                     case "2":
-                        health1 -= Convert.ToSingle(damage2) / 100 * protection2;
-                        if (health1 <= 0)
+                        healthHero -= Convert.ToSingle(damageEnemy) / 100 * protectionEnemy;
+                        if (healthHero <= 0)
                         {
-                            health1 = random.Next(100, 181);
+                            healthHero = random.Next(100, 181);
                         }
                         break;
                     case "3":
                         int devilesExit = random.Next(10, 20);
                         if (devil == false)
                         {
-                            health2 -= devilesExit;
-                            health1 -= devilesExit;
+                            healthEnemy -= devilesExit;
+                            healthHero -= devilesExit;
                             devil = true;
                         }
                         else if (devil == true)
@@ -92,10 +92,10 @@ namespace Boss_fight
                     case "4":
                         if (devil == true)
                         {
-                            int damage3;
-                            damage3 = random.Next(100, 300);
-                            health2 -= Convert.ToSingle(damage3) / 100 * protection2;
-                            Console.WriteLine("damage 3 - " + damage3);
+                            int damageDevil;
+                            damageDevil = random.Next(100, 300);
+                            healthEnemy -= Convert.ToSingle(damageDevil) / 100 * protectionEnemy;
+                            Console.WriteLine("damage 3 - " + damageDevil);
                         }
                         else if (devil == false)
                         {
@@ -104,31 +104,31 @@ namespace Boss_fight
                         }
                         break;
                     case "5":
-                        health2 -= Convert.ToSingle(damage1) / 100 * protection2;
+                        healthEnemy -= Convert.ToSingle(damageHero) / 100 * protectionEnemy;
                         break;
                     default:
                         Console.WriteLine(" no such ability");
                         break;
                 }
-                health1 -= Convert.ToSingle(damage2) / 100 * protection2;
+                healthHero -= Convert.ToSingle(damageEnemy) / 100 * protectionEnemy;
 
                 Console.WriteLine();
-                Console.WriteLine($"Stats hero:\nhp1 - {health1}, damage1 - {damage1}.\n" +
-                              $"\nStats enemy:\nhp2 - {health2}, damage 2 - {damage2}.");
+                Console.WriteLine($"Stats hero:\nhp1 - {healthHero}, damage1 - {damageHero}.\n" +
+                              $"\nStats enemy:\nhp2 - {healthEnemy}, damage 2 - {damageEnemy}.");
 
-            } while (health1 > 0 && health2 > 0);
+            } while (healthHero > 0 && healthEnemy > 0);
             
             Console.WriteLine();
-            if (health1 <= 0 && health2 <= 0)
+            if (healthHero <= 0 && healthEnemy <= 0)
 
             {
                 Console.WriteLine("draw");
             }
-            else if (health1 <= 0)
+            else if (healthHero <= 0)
             {
                 Console.WriteLine("your hero fell");
             }
-            else if (health2 <= 0)
+            else if (healthEnemy <= 0)
             {
                 Console.WriteLine("the enemy fell");
             }
