@@ -19,13 +19,13 @@ namespace Boss_fight
 
             Random random = new Random();
 
-            health1 = random.Next(90, 161);
-            protection1 = random.Next(30, 101);
-            damage1 = random.Next(1, 6);
+            healthHero = random.Next(90, 161);
+            protectionHero = random.Next(30, 101);
+            damageHero = random.Next(1, 6);
 
-            health2 = random.Next(500, 1001);
-            protection2 = random.Next(76, 101);
-            damage2 = random.Next(20, 80);
+            healthEnemy = random.Next(500, 1001);
+            protectionEnemy = random.Next(76, 101);
+            damageEnemy = random.Next(20, 80);
 
             Console.WriteLine("Enter ability to find out all abilities.");
             usingInput = Console.ReadLine();
@@ -41,8 +41,8 @@ namespace Boss_fight
             }
 
             Console.WriteLine();
-            Console.WriteLine($"Stats hero:\nhp1 - {healthHero}, damage1 - {damageHero}.\n" +
-                          $"\nStats enemy:\nhp2 - {healthEnemy}, damage 2 - {damageEnemy}.");
+            Console.WriteLine($"Stats hero:\nhp - {healthHero}, damage - {damageHero}.\n" +
+                          $"\nStats enemy:\nhp - {healthEnemy}, damage - {damageEnemy}.");
             do
             {
                 ShadowWord = random.Next(100, 131);
@@ -61,7 +61,7 @@ namespace Boss_fight
                                 healthHero += ShadowWord;
                                 break;
                             case "2":
-                                healthHero -= ShadowWord;
+                                healthEnemy -= ShadowWord;
                                 break;
                             default:
                                 Console.WriteLine("so you can’t use the ability");
@@ -113,8 +113,8 @@ namespace Boss_fight
                 healthHero -= Convert.ToSingle(damageEnemy) / 100 * protectionEnemy;
 
                 Console.WriteLine();
-                Console.WriteLine($"Stats hero:\nhp1 - {healthHero}, damage1 - {damageHero}.\n" +
-                              $"\nStats enemy:\nhp2 - {healthEnemy}, damage 2 - {damageEnemy}.");
+                Console.WriteLine($"Stats hero:\nhp - {healthHero}, damage - {damageHero}.\n" +
+                              $"\nStats enemy:\nhp - {healthEnemy}, damage - {damageEnemy}.");
 
             } while (healthHero > 0 && healthEnemy > 0);
             
