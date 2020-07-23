@@ -10,7 +10,7 @@ namespace ConsoleApp1
     class Program
     {
         static void Main(string[] args)
-        {
+        {   int sumLine, sumColumn;
             int[,] arr = {
                 {1,3,6},
                 {4,7,8},
@@ -20,11 +20,10 @@ namespace ConsoleApp1
             {
                 for(int j = 0; j < arr.GetLength(1);j++)
                 {
-                    Console.Write(arr[i,j]+ " | ");
+                    Console.Write(arr[i, j]+ " | ");
                 }
                 Console.WriteLine();
             }
-            int sumLine, sumColumn;
             sumLine = arr[1, 0] + arr[1, 1] + arr[1, 2];
             sumColumn = arr[0, 0] * arr[1, 0] * arr[2, 0];
             Console.WriteLine("Сумма 2 строки: "+sumLine);
