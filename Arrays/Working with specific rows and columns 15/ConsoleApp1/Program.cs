@@ -12,32 +12,32 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {   int sumLine = 0, sumColumn = 1;
-            int[,] arr = {
-                {1,3,6},
-                {4,7,8},
-                {2,4,1}
-            };
-            for (int i = 0; i < arr.GetLength(0);i++)
-            {   
-                if (i == 1)
-                {
-                   for (int j = 0; j < arr.GetLength(1); j++)
-                   {
-                        sumLine += arr[i,j];
-                   }
-                }
-                for(int j = 0; j < arr.GetLength(1);j++)
+            int line = 3 , Column = 3;
+            Random rnd = new Random();
+            int i, j;
+            int[,] arr = new int [Column, line];
+            for (i = 0; i < arr.GetLength(0);i++)
+            {
+                for(j = 0; j < arr.GetLength(1);j++)
                 {   
-                    if (j == 0)
-                    {
-                        sumColumn *= arr[i,j];
-                    }
+                    arr[i, j] = rnd.Next(10,100);
                     Console.Write(arr[i, j]+ " | ");
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine("Сумма 2 строки: " + sumLine);
-            Console.WriteLine("Произведение 1 столбца: " + sumColumn);
+
+            for (i = 0; i < arr.GetLength(0); i++)
+            {
+                sumColumn *= arr[i, 0];
+            }
+
+            for (i = 0; i < arr.GetLength(1); i++)
+            {
+                sumLine += arr[1, i];
+            }
+
+            Console.WriteLine("Сумма второй строки: " + sumLine);
+            Console.WriteLine("Произведение первого столбца: " + sumColumn);
             Console.ReadKey();
         }
     }
