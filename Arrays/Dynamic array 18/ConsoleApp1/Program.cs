@@ -11,27 +11,27 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {   
-            string UsingInputString;
-            int UsingInput, sum = 0;
+            string usingInputString;
+            int usingInput, sum = 0;
 
             int[] numbers = new int[0];
 
             while(true)
             {
                 Console.WriteLine("Введите число");
-                UsingInput = Convert.ToInt32(Console.ReadLine());                
+                usingInput = Convert.ToInt32(Console.ReadLine());                
                 int[] newNumbers = new int [numbers.Length + 1];
                 for (int i = 0; i < numbers.Length; i++)
                 {
                     newNumbers[i] = numbers[i];
                 }
-                newNumbers[newNumbers.Length - 1] = UsingInput;
+                newNumbers[newNumbers.Length - 1] = usingInput;
                 numbers = newNumbers;
 
                 Console.WriteLine("Введите sum если надо подвести итог");
-                UsingInputString = Console.ReadLine();
+                usingInputString = Console.ReadLine();
                 
-                if (UsingInputString == "sum")
+                if (usingInputString == "sum")
                 {
                     for(int i = 0; i < numbers.Length; i++)
                     {
@@ -40,9 +40,9 @@ namespace ConsoleApp1
                     Console.WriteLine();
                     Console.WriteLine("Сумма: " + sum +"\n\nВведите любой символ для продолжения или exit для выхода");
                     sum = 0;
-                    UsingInputString = Console.ReadLine();
+                    usingInputString = Console.ReadLine();
                 }
-                if (UsingInputString == "exit")
+                if (usingInputString == "exit")
                 {
                     break;
                 }
