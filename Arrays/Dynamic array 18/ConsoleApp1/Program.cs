@@ -10,16 +10,16 @@ namespace ConsoleApp1
     class Program
     {
         static void Main(string[] args)
-        {   int cycle = 0;
+        {   
             string UsingInputString;
             int UsingInput, sum = 0;
+
+            int[] numbers = new int[0];
 
             while(true)
             {
                 Console.WriteLine("Введите число");
-                UsingInput = Convert.ToInt32(Console.ReadLine());
-
-                int[] numbers = new int[cycle];
+                UsingInput = Convert.ToInt32(Console.ReadLine());                
                 int[] newNumbers = new int [numbers.Length + 1];
                 for (int i = 0; i < numbers.Length; i++)
                 {
@@ -27,8 +27,6 @@ namespace ConsoleApp1
                 }
                 newNumbers[newNumbers.Length - 1] = UsingInput;
                 numbers = newNumbers;
-
-                cycle++;
 
                 Console.WriteLine("Введите sum если надо подвести итог");
                 UsingInputString = Console.ReadLine();
@@ -39,7 +37,9 @@ namespace ConsoleApp1
                     {
                         sum += numbers [i];
                     }
-                    Console.WriteLine("Сумма: " + sum + "\nВведите любой символ для продолжения или exit для выхода");
+                    Console.WriteLine();
+                    Console.WriteLine("Сумма: " + sum +"\n\nВведите любой символ для продолжения или exit для выхода");
+                    sum = 0;
                     UsingInputString = Console.ReadLine();
                 }
                 if (UsingInputString == "exit")
