@@ -81,10 +81,10 @@ namespace Personnel_accounting
         }
         static void showAll(string[] name, string[] surname, string[] patronymic, string[] position)
         {
-            Console.WriteLine("# | " + "Имя | " + "Фамилия | " + "Отчество | " + "Должность");
+            Console.WriteLine("# - " + "Имя - " + "Фамилия - " + "Отчество - " + "Должность");
             for (int i = 0; i < name.Length; i++)
             {
-                Console.WriteLine(i + 1 + " | " + name[i] + " | " + surname[i] + " | " + patronymic[i] + " | " + position[i]);
+                Console.WriteLine(i + 1 + " - " + name[i] + " - " + surname[i] + " - " + patronymic[i] + " - " + position[i]);
             }
         }
         static string[] deleteDossier(ref string[] array, int index)
@@ -127,8 +127,8 @@ namespace Personnel_accounting
             {
                 if (usingInput.ToLower() == surname[i])
                 {
-                    Console.WriteLine("# | " + "Имя | " + "Фамилия | " + "Отчество | " + "Должность");
-                    Console.WriteLine(i + 1 + " | " + name[i] + " | " + surname[i] + " | " + patronymic[i] + " | " + position[i]);
+                    Console.WriteLine("# - " + "Имя - " + "Фамилия - " + "Отчество - " + "Должность");
+                    Console.WriteLine(i + 1 + " - " + name[i] + " - " + surname[i] + " - " + patronymic[i] + " - " + position[i]);
                 }
             }
         }
