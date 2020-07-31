@@ -1,0 +1,7 @@
+C:\Users\Наталья\program c#\local\Functions 19 - 23\Personnel accounting 19\Personnel accounting\bin\Debug\Personnel accounting.exe.config
+C:\Users\Наталья\program c#\local\Functions 19 - 23\Personnel accounting 19\Personnel accounting\bin\Debug\Personnel accounting.exe
+C:\Users\Наталья\program c#\local\Functions 19 - 23\Personnel accounting 19\Personnel accounting\bin\Debug\Personnel accounting.pdb
+C:\Users\Наталья\program c#\local\Functions 19 - 23\Personnel accounting 19\Personnel accounting\obj\Debug\Personnel accounting.csprojAssemblyReference.cache
+C:\Users\Наталья\program c#\local\Functions 19 - 23\Personnel accounting 19\Personnel accounting\obj\Debug\Personnel accounting.csproj.CoreCompileInputs.cache
+C:\Users\Наталья\program c#\local\Functions 19 - 23\Personnel accounting 19\Personnel accounting\obj\Debug\Personnel accounting.exe
+C:\Users\Наталья\program c#\local\Functions 19 - 23\Personnel accounting 19\Personnel accounting\obj\Debug\Personnel accounting.pdb
