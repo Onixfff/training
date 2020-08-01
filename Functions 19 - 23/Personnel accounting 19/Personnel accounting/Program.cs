@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Dynamic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
 using System.Runtime.ExceptionServices;
 using System.Runtime.Remoting.Contexts;
@@ -18,11 +20,8 @@ namespace Personnel_accounting
         {
             bool exit = true;
             string userInput;
-            string[] name = new string[0];
-            string[] surname = new string[0];
-            string[] patronymic = new string[0];
             string[] position = new string[0];
-
+            string[,] fullName = new string[3, 0];
             while (exit)
             {
                 Console.WriteLine("{0,10}", "Меню");
@@ -32,25 +31,21 @@ namespace Personnel_accounting
                 switch (userInput)
                 {
                     case "1":
-                        name = addition(name, name.Length,"Введите имя: ");
-                        surname = addition(surname, surname.Length,"Введите фамилию: ");
-                        patronymic = addition(patronymic, patronymic.Length,"Введите отчество: ");
-                        position = addition(position, position.Length,"Введите должность: ");
+                        fullName = addition(fullName);
+                        position = addition(position);
                         break;
                     case "2":
-                        showAll(name, surname, patronymic, position);
+                        showAll(fullName, position);
                         break;
                     case "3":
                         int index;
                         Console.WriteLine("Введите номер договора для удаления");
                         index = Convert.ToInt32(Console.ReadLine());
-                        deleteDossier(ref name, index);
-                        deleteDossier(ref surname, index);
-                        deleteDossier(ref patronymic, index);
-                        deleteDossier(ref position, index);
+                        ClearIndexArray(ref position, index);
+                        ClearIndexArray(ref fullName, index);
                         break;
                     case "4":
-                        searchBySurname(name, surname, patronymic, position);
+                        searchBySurname(fullName, position);
                         break;
                     case "5":
                         exit = false;
@@ -63,40 +58,79 @@ namespace Personnel_accounting
                 Console.Clear();
             }
         }
-        static string[] addition(string[] arrayName, int size,string text)
+        static string[] addition(string[] arrayName)
         {
             string userInput;
-            Console.Write(text);
-            userInput = Console.ReadLine();
+            userInput = textInput("Введите должность: ").ToLower();
 
-            string[] newName = new string[size + 1];
+            string[] newName = new string[arrayName.Length + 1];
 
             for (int i = 0; i < arrayName.Length; i++)
             {
                 newName[i] = arrayName[i];
             }
             arrayName = newName;
-            arrayName[arrayName.Length - 1] = userInput.ToLower();
+            arrayName[arrayName.Length - 1] = userInput;
             return arrayName;
         }
-        static void showAll(string[] name, string[] surname, string[] patronymic, string[] position)
+        static string[,] addition(string[,] array)
         {
-            Console.WriteLine("# - " + "Имя - " + "Фамилия - " + "Отчество - " + "Должность");
-            for (int i = 0; i < name.Length; i++)
+            string name, surname, patronymic;
+
+            name = textInput("Введите имя: ");
+            surname = textInput("Введите фамилию: ");
+            patronymic = textInput("Введите отчество: ");
+
+            string[,] newArray = new string[array.GetLength(0), array.GetLength(1) + 1];
+            for (int i = 0; i < array.GetLength(0); i++)
             {
-                Console.WriteLine(i + 1 + " - " + name[i] + " - " + surname[i] + " - " + patronymic[i] + " - " + position[i]);
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    newArray[i, j] = array[i, j];
+                }
+            }
+            array = newArray;
+            array[0, array.GetLength(1) - 1] = name;
+            array[1, array.GetLength(1) - 1] = surname;
+            array[2, array.GetLength(1) - 1] = patronymic;
+            return array;
+        }
+        static string textInput(string text)
+        {
+            string userInput;
+            Console.Write(text);
+            userInput = Console.ReadLine().ToLower();
+            return userInput;
+        }
+        static void showAll(string[,] fullName, string[] position)
+        {
+            Console.WriteLine("#  - " + " Имя  - " + " Фамилия  - " + " Отчество  - " + " Должность");
+
+            int index = 1;
+            for (int x = 0; x < position.Length; x++)
+            {
+                Console.Write(x + 1 + " - ");
+                for (int i = 0; i < fullName.GetLength(0); i++)
+                {
+                    for (int j = index - 1; j < index; j++)
+                    {
+                        Console.Write(fullName[i, j] + " - ");
+                    }
+                }
+                index++;
+                Console.Write(position[x]);
+                Console.WriteLine();
             }
         }
-        static string[] deleteDossier(ref string[] array, int index)
+        static string[] ClearIndexArray(ref string[] array, int index)
         {
-            index --;
+            index--;
             string[] newArray = new string[array.Length - 1];
 
             for (int i = 0; i < index; i++)
             {
                 newArray[i] = array[i];
             }
-            
             for (int i = index + 1; i < array.Length; i++)
             {
                 newArray[i - 1] = array[i];
@@ -104,33 +138,58 @@ namespace Personnel_accounting
             array = newArray;
             return array;
         }
-        static void clear(string[] array)
+        static string[,] ClearIndexArray(ref string[,] array, int index)
         {
-            int number;
-            Console.WriteLine("Введите номер договора для удаления");
-            number = Convert.ToInt32(Console.ReadLine());
-            for (int i = 0; i < array.Length; i++)
+            index--;
+            string[,] newArray = new string[array.GetLength(0), array.GetLength(1) - 1];
+
+            for (int i = 0; i < array.GetLength(0); i++)
             {
-                if (number - 1 == i)
+                for (int j = 0; j < index; j++)
                 {
-                    Array.Clear(array, i, i + 1);
+                    newArray[i, j] = array[i, j];
                 }
-                
             }
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = index + 1; j < array.GetLength(1); j++)
+                {
+                    newArray[i, j - 1] = array[i, j];
+                }
+            }
+            array = newArray;
+            return array;
         }
-        static void searchBySurname(string[] name, string[] surname, string[] patronymic, string[] position)
+
+        static void searchBySurname(string[,] fullName, string[] position)
         {
-            string usingInput;
+            string userInput;
             Console.Write("Введите фамилию: ");
-            usingInput = Console.ReadLine();
-            for (int i = 0; i < surname.Length; i++)
+            userInput = Console.ReadLine().ToLower();
+            Console.WriteLine("#  - " + " Имя  - " + " Фамилия  - " + " Отчество  - " + " Должность");
+            int index = 1;
+
+            for (int i = 0; i < fullName.GetLength(0); i++)
             {
-                if (usingInput.ToLower() == surname[i])
+                for (int j = 0; j < fullName.GetLength(1); j++)
                 {
-                    Console.WriteLine("# - " + "Имя - " + "Фамилия - " + "Отчество - " + "Должность");
-                    Console.WriteLine(i + 1 + " - " + name[i] + " - " + surname[i] + " - " + patronymic[i] + " - " + position[i]);
+                    if (userInput == fullName[i,j])
+                    {
+                        Console.Write(index + " - ");
+                        for (int x = 0; x < fullName.GetLength(0); x ++)
+                        {
+                            for (int y = j; y < fullName.GetLength(1); y = fullName.GetLength(1) )
+                            {
+                                Console.Write(fullName[x, y] + " - ");
+                            }
+                        }
+                        index++;
+                        Console.Write(position[j] + "\n");
+                    }
                 }
             }
+
         }
         static void error(string textError)
         {
