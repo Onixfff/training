@@ -1,0 +1,7 @@
+F:\Проекты\Проекты c#\ЯЮниор\repository\Functions 19 - 23\ReadInt 21\ReadInt\bin\Debug\ReadInt.exe.config
+F:\Проекты\Проекты c#\ЯЮниор\repository\Functions 19 - 23\ReadInt 21\ReadInt\bin\Debug\ReadInt.exe
+F:\Проекты\Проекты c#\ЯЮниор\repository\Functions 19 - 23\ReadInt 21\ReadInt\bin\Debug\ReadInt.pdb
+F:\Проекты\Проекты c#\ЯЮниор\repository\Functions 19 - 23\ReadInt 21\ReadInt\obj\Debug\ReadInt.csprojAssemblyReference.cache
+F:\Проекты\Проекты c#\ЯЮниор\repository\Functions 19 - 23\ReadInt 21\ReadInt\obj\Debug\ReadInt.csproj.CoreCompileInputs.cache
+F:\Проекты\Проекты c#\ЯЮниор\repository\Functions 19 - 23\ReadInt 21\ReadInt\obj\Debug\ReadInt.exe
+F:\Проекты\Проекты c#\ЯЮниор\repository\Functions 19 - 23\ReadInt 21\ReadInt\obj\Debug\ReadInt.pdb
