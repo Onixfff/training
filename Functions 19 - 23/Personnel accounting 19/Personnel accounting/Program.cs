@@ -31,8 +31,8 @@ namespace Personnel_accounting
                 switch (userInput)
                 {
                     case "1":
-                        fullName = addition(fullName);
-                        position = addition(position);
+                        fullName = addingAnArray(fullName);
+                        position = addingAnArray(position);
                         break;
                     case "2":
                         showAll(fullName, position);
@@ -41,8 +41,8 @@ namespace Personnel_accounting
                         int index;
                         Console.WriteLine("Введите номер договора для удаления");
                         index = Convert.ToInt32(Console.ReadLine());
-                        ClearIndexArray(ref position, index);
-                        ClearIndexArray(ref fullName, index);
+                        deleteArrayByIndex(ref position, index);
+                        deleteArrayByIndex(ref fullName, index);
                         break;
                     case "4":
                         searchBySurname(fullName, position);
@@ -58,10 +58,11 @@ namespace Personnel_accounting
                 Console.Clear();
             }
         }
-        static string[] addition(string[] arrayName)
+
+        static string[] addingAnArray(string[] arrayName)
         {
             string userInput;
-            userInput = textInput("Введите должность: ").ToLower();
+            userInput = textOutput("Введите должность: ").ToLower();
 
             string[] newName = new string[arrayName.Length + 1];
 
@@ -73,13 +74,14 @@ namespace Personnel_accounting
             arrayName[arrayName.Length - 1] = userInput;
             return arrayName;
         }
-        static string[,] addition(string[,] array)
+
+        static string[,] addingAnArray(string[,] array)
         {
             string name, surname, patronymic;
 
-            name = textInput("Введите имя: ");
-            surname = textInput("Введите фамилию: ");
-            patronymic = textInput("Введите отчество: ");
+            name = textOutput("Введите имя: ");
+            surname = textOutput("Введите фамилию: ");
+            patronymic = textOutput("Введите отчество: ");
 
             string[,] newArray = new string[array.GetLength(0), array.GetLength(1) + 1];
             for (int i = 0; i < array.GetLength(0); i++)
@@ -95,13 +97,15 @@ namespace Personnel_accounting
             array[2, array.GetLength(1) - 1] = patronymic;
             return array;
         }
-        static string textInput(string text)
+
+        static string textOutput(string text)
         {
             string userInput;
             Console.Write(text);
             userInput = Console.ReadLine().ToLower();
             return userInput;
         }
+
         static void showAll(string[,] fullName, string[] position)
         {
             Console.WriteLine("#  - " + " Имя  - " + " Фамилия  - " + " Отчество  - " + " Должность");
@@ -122,7 +126,8 @@ namespace Personnel_accounting
                 Console.WriteLine();
             }
         }
-        static string[] ClearIndexArray(ref string[] array, int index)
+
+        static string[] deleteArrayByIndex(ref string[] array, int index)
         {
             index--;
             string[] newArray = new string[array.Length - 1];
@@ -138,7 +143,8 @@ namespace Personnel_accounting
             array = newArray;
             return array;
         }
-        static string[,] ClearIndexArray(ref string[,] array, int index)
+
+        static string[,] deleteArrayByIndex(ref string[,] array, int index)
         {
             index--;
             string[,] newArray = new string[array.GetLength(0), array.GetLength(1) - 1];
@@ -191,6 +197,7 @@ namespace Personnel_accounting
             }
 
         }
+
         static void error(string textError)
         {
             ConsoleColor defaultColor = Console.ForegroundColor;
