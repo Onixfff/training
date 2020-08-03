@@ -23,14 +23,14 @@ namespace UIElement
                 mana += Convert.ToInt32(Console.ReadLine());
 
                 Console.CursorVisible = false;
-                drawBar(health, maxHealth, ConsoleColor.Red, 0, '#'); ;
+                drawBar(health, maxHealth, ConsoleColor.Red, 0);
                 drawBar(mana, maxMana, ConsoleColor.Blue, 1);
                 Console.ReadKey();
                 Console.Clear();
             }
         }
 
-        static void drawBar(int value, int maxValue, ConsoleColor color, int position, char symbol = ' ')
+        static void drawBar(int value, int maxValue, ConsoleColor color, int position, char symbol = '#')
         {
             ConsoleColor defaultColor = Console.BackgroundColor;
             string bar = "";
