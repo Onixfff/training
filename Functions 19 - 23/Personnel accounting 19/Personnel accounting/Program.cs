@@ -31,27 +31,27 @@ namespace Personnel_accounting
                 switch (userInput)
                 {
                     case "1":
-                        fullName = addingAnArray(fullName);
-                        position = addingAnArray(position);
+                        fullName = AddingADossierAndExpandingTheArray(fullName);
+                        position = AddingADossierAndExpandingTheArray(position);
                         break;
                     case "2":
-                        showAll(fullName, position);
+                        ShowAllDossiers(fullName, position);
                         break;
                     case "3":
                         int index;
                         Console.WriteLine("Введите номер договора для удаления");
                         index = Convert.ToInt32(Console.ReadLine());
-                        deleteArrayByIndex(ref position, index);
-                        deleteArrayByIndex(ref fullName, index);
+                        DeleteArrayByIndexAndDossier(ref position, index);
+                        DeleteArrayByIndexAndDossier(ref fullName, index);
                         break;
                     case "4":
-                        searchBySurname(fullName, position);
+                        SearchBySurname(fullName, position);
                         break;
                     case "5":
                         exit = false;
                         break;
                     default:
-                        error("Скорее всего вы нажали не на ту кнопку!");
+                        WriteError("Скорее всего вы нажали не на ту кнопку!");
                         break;
                 }
                 Console.ReadKey();
@@ -59,10 +59,10 @@ namespace Personnel_accounting
             }
         }
 
-        static string[] addingAnArray(string[] arrayName)
+        static string[] AddingADossierAndExpandingTheArray(string[] arrayName)
         {
             string userInput;
-            userInput = textOutput("Введите должность: ").ToLower();
+            userInput = OutputsTextAndReturnsUserInput("Введите должность: ").ToLower();
 
             string[] newName = new string[arrayName.Length + 1];
 
@@ -75,13 +75,13 @@ namespace Personnel_accounting
             return arrayName;
         }
 
-        static string[,] addingAnArray(string[,] array)
+        static string[,] AddingADossierAndExpandingTheArray(string[,] array)
         {
             string name, surname, patronymic;
 
-            name = textOutput("Введите имя: ");
-            surname = textOutput("Введите фамилию: ");
-            patronymic = textOutput("Введите отчество: ");
+            name = OutputsTextAndReturnsUserInput("Введите имя: ");
+            surname = OutputsTextAndReturnsUserInput("Введите фамилию: ");
+            patronymic = OutputsTextAndReturnsUserInput("Введите отчество: ");
 
             string[,] newArray = new string[array.GetLength(0), array.GetLength(1) + 1];
             for (int i = 0; i < array.GetLength(0); i++)
@@ -98,7 +98,7 @@ namespace Personnel_accounting
             return array;
         }
 
-        static string textOutput(string text)
+        static string OutputsTextAndReturnsUserInput(string text)
         {
             string userInput;
             Console.Write(text);
@@ -106,7 +106,7 @@ namespace Personnel_accounting
             return userInput;
         }
 
-        static void showAll(string[,] fullName, string[] position)
+        static void ShowAllDossiers(string[,] fullName, string[] position)
         {
             Console.WriteLine("#  - " + " Имя  - " + " Фамилия  - " + " Отчество  - " + " Должность");
 
@@ -127,7 +127,7 @@ namespace Personnel_accounting
             }
         }
 
-        static string[] deleteArrayByIndex(ref string[] array, int index)
+        static string[] DeleteArrayByIndexAndDossier(ref string[] array, int index)
         {
             index--;
             string[] newArray = new string[array.Length - 1];
@@ -144,7 +144,7 @@ namespace Personnel_accounting
             return array;
         }
 
-        static string[,] deleteArrayByIndex(ref string[,] array, int index)
+        static string[,] DeleteArrayByIndexAndDossier(ref string[,] array, int index)
         {
             index--;
             string[,] newArray = new string[array.GetLength(0), array.GetLength(1) - 1];
@@ -168,7 +168,7 @@ namespace Personnel_accounting
             return array;
         }
 
-        static void searchBySurname(string[,] fullName, string[] position)
+        static void SearchBySurname(string[,] fullName, string[] position)
         {
             string userInput;
             Console.Write("Введите фамилию: ");
@@ -198,7 +198,7 @@ namespace Personnel_accounting
 
         }
 
-        static void error(string textError)
+        static void WriteError(string textError)
         {
             ConsoleColor defaultColor = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Red;
