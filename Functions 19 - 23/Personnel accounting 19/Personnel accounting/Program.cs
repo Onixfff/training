@@ -31,8 +31,8 @@ namespace Personnel_accounting
                 switch (userInput)
                 {
                     case "1":
-                        fullName = addDossier(fullName);
-                        position = addDossier(position);
+                        fullName = AddDossier(fullName);
+                        position = AddDossier(position);
                         break;
                     case "2":
                         ShowAll(fullName, position);
@@ -41,8 +41,8 @@ namespace Personnel_accounting
                         int index;
                         Console.WriteLine("Введите номер договора для удаления");
                         index = Convert.ToInt32(Console.ReadLine());
-                        deleteDossier(ref position, index);
-                        deleteDossier(ref fullName, index);
+                        DeleteDossier(ref position, index);
+                        DeleteDossier(ref fullName, index);
                         break;
                     case "4":
                         SearchBySurname(fullName, position);
@@ -59,7 +59,7 @@ namespace Personnel_accounting
             }
         }
 
-        static string[] addDossier(string[] arrayName)
+        static string[] AddDossier(string[] arrayName)
         {
             string position;
 
@@ -76,7 +76,7 @@ namespace Personnel_accounting
             return arrayName;
         }
 
-        static string[,] addDossier(string[,] array)
+        static string[,] AddDossier(string[,] array)
         {
             string name, surname, patronymic;
 
@@ -128,7 +128,7 @@ namespace Personnel_accounting
             }
         }
 
-        static string[] deleteDossier(ref string[] array, int index)
+        static string[] DeleteDossier(ref string[] array, int index)
         {
             index--;
             string[] newArray = new string[array.Length - 1];
@@ -145,7 +145,7 @@ namespace Personnel_accounting
             return array;
         }
 
-        static string[,] deleteDossier(ref string[,] array, int index)
+        static string[,] DeleteDossier(ref string[,] array, int index)
         {
             index--;
             string[,] newArray = new string[array.GetLength(0), array.GetLength(1) - 1];
