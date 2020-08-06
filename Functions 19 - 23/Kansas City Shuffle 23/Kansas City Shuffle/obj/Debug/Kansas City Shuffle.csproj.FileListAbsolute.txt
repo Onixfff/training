@@ -1,0 +1,7 @@
+F:\Проекты\Проекты c#\ЯЮниор\repository\Functions 19 - 23\Kansas City Shuffle 23\Kansas City Shuffle\bin\Debug\Kansas City Shuffle.exe.config
+F:\Проекты\Проекты c#\ЯЮниор\repository\Functions 19 - 23\Kansas City Shuffle 23\Kansas City Shuffle\bin\Debug\Kansas City Shuffle.exe
+F:\Проекты\Проекты c#\ЯЮниор\repository\Functions 19 - 23\Kansas City Shuffle 23\Kansas City Shuffle\bin\Debug\Kansas City Shuffle.pdb
+F:\Проекты\Проекты c#\ЯЮниор\repository\Functions 19 - 23\Kansas City Shuffle 23\Kansas City Shuffle\obj\Debug\Kansas City Shuffle.csprojAssemblyReference.cache
+F:\Проекты\Проекты c#\ЯЮниор\repository\Functions 19 - 23\Kansas City Shuffle 23\Kansas City Shuffle\obj\Debug\Kansas City Shuffle.csproj.CoreCompileInputs.cache
+F:\Проекты\Проекты c#\ЯЮниор\repository\Functions 19 - 23\Kansas City Shuffle 23\Kansas City Shuffle\obj\Debug\Kansas City Shuffle.exe
+F:\Проекты\Проекты c#\ЯЮниор\repository\Functions 19 - 23\Kansas City Shuffle 23\Kansas City Shuffle\obj\Debug\Kansas City Shuffle.pdb
