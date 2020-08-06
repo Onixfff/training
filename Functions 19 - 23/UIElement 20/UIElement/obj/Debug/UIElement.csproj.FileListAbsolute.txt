@@ -5,3 +5,10 @@ C:\Users\Наталья\program c#\reposit\Functions 19 - 23\UIElement 20\UIElem
 C:\Users\Наталья\program c#\reposit\Functions 19 - 23\UIElement 20\UIElement\obj\Debug\UIElement.csproj.CoreCompileInputs.cache
 C:\Users\Наталья\program c#\reposit\Functions 19 - 23\UIElement 20\UIElement\obj\Debug\UIElement.exe
 C:\Users\Наталья\program c#\reposit\Functions 19 - 23\UIElement 20\UIElement\obj\Debug\UIElement.pdb
+F:\Проекты\Проекты c#\ЯЮниор\repository\Functions 19 - 23\UIElement 20\UIElement\obj\Debug\UIElement.csprojAssemblyReference.cache
+F:\Проекты\Проекты c#\ЯЮниор\repository\Functions 19 - 23\UIElement 20\UIElement\obj\Debug\UIElement.csproj.CoreCompileInputs.cache
+F:\Проекты\Проекты c#\ЯЮниор\repository\Functions 19 - 23\UIElement 20\UIElement\obj\Debug\UIElement.exe
+F:\Проекты\Проекты c#\ЯЮниор\repository\Functions 19 - 23\UIElement 20\UIElement\obj\Debug\UIElement.pdb
+F:\Проекты\Проекты c#\ЯЮниор\repository\Functions 19 - 23\UIElement 20\UIElement\bin\Debug\UIElement.exe.config
+F:\Проекты\Проекты c#\ЯЮниор\repository\Functions 19 - 23\UIElement 20\UIElement\bin\Debug\UIElement.exe
+F:\Проекты\Проекты c#\ЯЮниор\repository\Functions 19 - 23\UIElement 20\UIElement\bin\Debug\UIElement.pdb
