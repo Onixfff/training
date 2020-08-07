@@ -18,6 +18,7 @@ namespace Kansas_City_Shuffle
             Filling(arr);
             Output(arr,"Начальный массив");
             Shuffle(arr);
+            Output(arr, "После перемешивания");
             Console.ReadKey();
         }
 
@@ -45,12 +46,11 @@ namespace Kansas_City_Shuffle
             for (int i = arr.Length - 1; i >= 1; i--)
             {
                 Random rnd = new Random();
-                int j = rnd.Next(i + 1);
-                var temp = arr[j];
-                arr[j] = arr[i];
-                arr[i] = temp;
+                int randomNumber = rnd.Next(i + 1);
+                var numberBox = arr[randomNumber];
+                arr[randomNumber]   = arr[i];
+                arr[i] = numberBox;
             }
-            Output(arr,"После перемешивания");
         }
     }
 }
