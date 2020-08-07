@@ -25,13 +25,14 @@ namespace UIElement
 
         static void DrawBar(ConsoleColor color, int position, string text, char symbol = '#')
         {
-            double defaultValue, value, maxValue = 10;
+            double userInput, value, barSize = 10;
 
             Console.SetCursorPosition(0, 4);
             ConsoleColor defaultColor = Console.BackgroundColor;
             Console.WriteLine(text);
-            value = Convert.ToSingle(Console.ReadLine());
-            defaultValue = value;
+            userInput = Convert.ToDouble(Console.ReadLine());
+            value = userInput;
+
             if (value <= 100)
             {
                 string bar = "";
@@ -51,11 +52,11 @@ namespace UIElement
 
                 bar = "";
 
-                for (double i = value; i < maxValue; i++)
+                for (double i = value; i < barSize; i++)
                 {
                     bar += " ";
                 }
-                Console.Write(bar + "] " + defaultValue + "%");
+                Console.Write(bar + "] " + userInput + "%");
 
             }
             else
