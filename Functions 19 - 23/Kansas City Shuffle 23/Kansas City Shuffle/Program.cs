@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,9 +11,12 @@ namespace Kansas_City_Shuffle
     {
         static void Main(string[] args)
         {
-            int[] arr = new int[10];
+            int n;
+            Console.WriteLine("Введите какой длинны будет массив");
+            n = Convert.ToInt32(Console.ReadLine());
+            int[] arr = new int[n];
             Filling(arr);
-            Output(arr);
+            Output(arr,"Начальный массив");
             Shuffle(arr);
             Console.ReadKey();
         }
@@ -26,23 +30,27 @@ namespace Kansas_City_Shuffle
             }
         }
 
-        static void Output(int[] arr)
+        static void Output(int[] arr, string text)
         {
-            Console.Write("Начальный массив (");
+            Console.Write($"{text} (");
             for (int i = 0; i < arr.Length; i++)
             {
-                Console.Write("{0,2}", arr[i]);
+                Console.Write(arr[i]);
             }
             Console.WriteLine(")");
         }
 
         static void Shuffle(int[]arr)
         {
-            Console.Write("После перемешивания (");
-
-            
-
-            Console.Write(")");
+            for (int i = arr.Length - 1; i >= 1; i--)
+            {
+                Random rnd = new Random();
+                int j = rnd.Next(i + 1);
+                var temp = arr[j];
+                arr[j] = arr[i];
+                arr[i] = temp;
+            }
+            Output(arr,"После перемешивания");
         }
     }
 }
