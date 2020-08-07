@@ -10,6 +10,7 @@ namespace Brave_new_world
     {
         static void Main(string[] args)
         {
+
         }
     }
 }

@@ -11,10 +11,13 @@ namespace ReadInt
     {
         static void Main(string[] args)
         {
-            ConvertInt();
+            int userInput;
+            userInput = ReadData();
+            Console.WriteLine("Вы вывели число" + userInput);
+            Console.ReadKey();
         }
 
-        static void ConvertInt()
+        static int ReadData()
         {
             int resultConvert;
             do
@@ -26,6 +29,7 @@ namespace ReadInt
                 {
                     Console.WriteLine("Вы ошиблись повторите попытку!\n");
                 }
+                return resultConvert;
             }
             while (resultConvert == 0);
         }
