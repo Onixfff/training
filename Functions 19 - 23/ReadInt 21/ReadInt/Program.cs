@@ -11,24 +11,27 @@ namespace ReadInt
     {
         static void Main(string[] args)
         {
-            bool exit = true;
-            Console.Write("Введите число: ");
-            while (exit)
+            int userInput;
+            userInput = ReadData();
+            Console.WriteLine("Вы вывели число" + userInput);
+            Console.ReadKey();
+        }
+
+        static int ReadData()
+        {
+            int resultConvert;
+            do
             {
-                int number;
-                bool tryin = Int32.TryParse(Console.ReadLine(), out number);
-                if (tryin)
+                Console.Write("Введите целое число: ");
+                string userInput = Console.ReadLine();
+                int.TryParse(userInput, out resultConvert);
+                if (resultConvert == 0)
                 {
-                    Console.WriteLine("Всё верно ваше число - " + number);
-                    exit = false;
+                    Console.WriteLine("Вы ошиблись повторите попытку!\n");
                 }
-                else
-                {
-                    Console.WriteLine("Error ваше число не может быть сконвертировано " + number);
-                }
-                Console.ReadKey();
-                Console.WriteLine("Введите число ещё раз");
+                return resultConvert;
             }
+            while (resultConvert == 0);
         }
     }
 }

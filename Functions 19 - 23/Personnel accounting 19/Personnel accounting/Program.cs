@@ -31,18 +31,18 @@ namespace Personnel_accounting
                 switch (userInput)
                 {
                     case "1":
-                        fullName = AddingADossierAndExpandingTheArray(fullName);
-                        position = AddingADossierAndExpandingTheArray(position);
+                        fullName = AddDossier(fullName);
+                        position = AddDossier(position);
                         break;
                     case "2":
-                        ShowAllDossiers(fullName, position);
+                        ShowAll(fullName, position);
                         break;
                     case "3":
                         int index;
                         Console.WriteLine("Введите номер договора для удаления");
                         index = Convert.ToInt32(Console.ReadLine());
-                        DeleteArrayByIndexAndDossier(ref position, index);
-                        DeleteArrayByIndexAndDossier(ref fullName, index);
+                        DeleteDossier(ref position, index);
+                        DeleteDossier(ref fullName, index);
                         break;
                     case "4":
                         SearchBySurname(fullName, position);
@@ -59,10 +59,11 @@ namespace Personnel_accounting
             }
         }
 
-        static string[] AddingADossierAndExpandingTheArray(string[] arrayName)
+        static string[] AddDossier(string[] arrayName)
         {
-            string userInput;
-            userInput = OutputsTextAndReturnsUserInput("Введите должность: ").ToLower();
+            string position;
+
+            position = userInput("Введите должность: ");
 
             string[] newName = new string[arrayName.Length + 1];
 
@@ -71,17 +72,17 @@ namespace Personnel_accounting
                 newName[i] = arrayName[i];
             }
             arrayName = newName;
-            arrayName[arrayName.Length - 1] = userInput;
+            arrayName[arrayName.Length - 1] = position;
             return arrayName;
         }
 
-        static string[,] AddingADossierAndExpandingTheArray(string[,] array)
+        static string[,] AddDossier(string[,] array)
         {
             string name, surname, patronymic;
 
-            name = OutputsTextAndReturnsUserInput("Введите имя: ");
-            surname = OutputsTextAndReturnsUserInput("Введите фамилию: ");
-            patronymic = OutputsTextAndReturnsUserInput("Введите отчество: ");
+            name = userInput("Введите имя: ");
+            surname = userInput("Введите фамилию: ");
+            patronymic = userInput ("Введите отчество: ");
 
             string[,] newArray = new string[array.GetLength(0), array.GetLength(1) + 1];
             for (int i = 0; i < array.GetLength(0); i++)
@@ -98,7 +99,7 @@ namespace Personnel_accounting
             return array;
         }
 
-        static string OutputsTextAndReturnsUserInput(string text)
+        static string userInput(string text)
         {
             string userInput;
             Console.Write(text);
@@ -106,7 +107,7 @@ namespace Personnel_accounting
             return userInput;
         }
 
-        static void ShowAllDossiers(string[,] fullName, string[] position)
+        static void ShowAll(string[,] fullName, string[] position)
         {
             Console.WriteLine("#  - " + " Имя  - " + " Фамилия  - " + " Отчество  - " + " Должность");
 
@@ -127,7 +128,7 @@ namespace Personnel_accounting
             }
         }
 
-        static string[] DeleteArrayByIndexAndDossier(ref string[] array, int index)
+        static string[] DeleteDossier(ref string[] array, int index)
         {
             index--;
             string[] newArray = new string[array.Length - 1];
@@ -144,7 +145,7 @@ namespace Personnel_accounting
             return array;
         }
 
-        static string[,] DeleteArrayByIndexAndDossier(ref string[,] array, int index)
+        static string[,] DeleteDossier(ref string[,] array, int index)
         {
             index--;
             string[,] newArray = new string[array.GetLength(0), array.GetLength(1) - 1];
