@@ -13,12 +13,13 @@ namespace UIElement
         {
             while (true)
             {
+                char symbol = '%';
                 int health = 2, maxHealth = 10;
                 int mana = 3, maxMana = 10;
                 Console.SetCursorPosition(0, 4);
                 Console.CursorVisible = true;
-                Console.Write("Введите число, на которое изменится жизни: ");
-                health += Convert.ToInt32(Console.ReadLine());
+                Console.Write("Введите сколько hp% у героя: ");
+                health = Convert.ToInt32(Console.ReadLine());
                 Console.Write("Введите число, на которое изменится мана: ");
                 mana += Convert.ToInt32(Console.ReadLine());
 
@@ -27,6 +28,20 @@ namespace UIElement
                 drawBar(mana, maxMana, ConsoleColor.Blue, 1);
                 Console.ReadKey();
                 Console.Clear();
+            }
+        }
+
+        static void prochent(int value, int maxValue)
+        {
+            switch (value)
+            {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                
+                default:
+                    break;
             }
         }
 
