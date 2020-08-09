@@ -25,7 +25,6 @@ namespace Brave_new_world
                     DrawMapAndHero(map, positionX, positionY);
                     HeroWalking(map, ref positionX, ref positionY);
                     TakeCoins(map,positionX,positionY,ref coins);
-                    //SwitchMap(ref end, ref finishMap, ref Map, ref coins, ref mapCoins, ref finish1);
                     ClearMap(map);
                     SwitchMap(ref endGame, ref finishMap, ref Map, ref coins, ref mapCoins, ref finish1);
                 }
