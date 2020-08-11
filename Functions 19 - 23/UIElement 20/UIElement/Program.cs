@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Runtime.DesignerServices;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
@@ -14,53 +15,72 @@ namespace UIElement
         {
             while (true)
             {
-                DrawBar(ConsoleColor.Red,0,"Введите сколько у вас жизней до 101 ");
-                ClearLine(4);
-                DrawBar(ConsoleColor.Blue,1,"Введите сколько у вас маны до 101 ");
-                ClearLine(4);
+                CreateBar("Введите сколько у вас жизней  0 - 100 ",ConsoleColor.Red,0);
+                CreateBar("Введите сколько у вас маны  0 - 100", ConsoleColor.Blue, 1);
                 Console.ReadKey();
                 Console.Clear();
             }
         }
 
-        static void DrawBar(ConsoleColor color, int position, string text, char symbol = '#')
+        static void CreateBar (string text, ConsoleColor color, int position)
         {
-            double userInput, value, barSize = 10;
+            string startBar, endBar;
+            double userInput;
+            TextOutput(text);
+            UserInput( out userInput);
+            ProcessesTheUserInput(userInput, out startBar, out endBar);
+            DrawBar(startBar, endBar, position, color, userInput);
+            ClearLine(4);
+        }
 
+        static void TextOutput (string text)
+        {
             Console.SetCursorPosition(0, 4);
-            ConsoleColor defaultColor = Console.BackgroundColor;
             Console.WriteLine(text);
+        }
+
+        static double UserInput(out double userInput)
+        {
             userInput = Convert.ToDouble(Console.ReadLine());
-            value = userInput;
+            return userInput;
+        }
 
-            if (value <= 100)
+        static void ProcessesTheUserInput(double userInput , out string startBar, out string endBar, char symbol = '#')
+        {
+            double barSize = 10;
+            int conversionToInterest = 10;
+            startBar = "";
+            endBar = startBar;
+
+            if (userInput <= 100)
             {
-                string bar = "";
-                value /= 10;
-                value = Math.Ceiling(value);
+                userInput /= conversionToInterest;
+                userInput = Math.Ceiling(userInput);
 
-                for (int i = 0; i < value; i++)
+                for (int i = 0; i < userInput; i++)
                 {
-                    bar += symbol;
+                    startBar += symbol;
                 }
 
-                Console.SetCursorPosition(0, position);
-                Console.Write("[");
-                Console.BackgroundColor = color;
-                Console.Write(bar);
-                Console.BackgroundColor = defaultColor;
-
-                bar = "";
-
-                for (double i = value; i < barSize; i++)
+                for (double i = userInput; i < barSize; i++)
                 {
-                    bar += " ";
+                    endBar += " ";
                 }
-                Console.Write(bar + "] " + userInput + "%");
-
             }
             else
                 Error("Вы ввели неправельно проценты");
+        }
+
+        static void DrawBar(string startBar, string endBar, int position, ConsoleColor color, double userInput)
+        {
+            ConsoleColor defaultColor = Console.BackgroundColor;
+            Console.SetCursorPosition(0, position);
+            Console.Write("[");
+            Console.BackgroundColor = color;
+            Console.Write(startBar);
+            Console.BackgroundColor = defaultColor;
+
+            Console.Write(endBar + "] " + userInput + "%");
         }
 
         static void Error(string text = "Ошибочка !", ConsoleColor color = ConsoleColor.Red)
