@@ -34,7 +34,7 @@ namespace Kansas_City_Shuffle
         static void Output(int[] arr, string text)
         {
             Console.Write($"{text} (");
-            for (int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < arr.Length; i++) 
             {
                 Console.Write(arr[i]);
             }
@@ -43,13 +43,13 @@ namespace Kansas_City_Shuffle
 
         static void Shuffle(int[]arr)
         {
-            for (int i = arr.Length - 1; i >= 1; i--)
+            for (int i = arr.Length - 1; i >= 1; i--) 
             {
                 Random rnd = new Random();
                 int randomNumber = rnd.Next(i + 1);
-                var numberBox = arr[randomNumber];
-                arr[randomNumber]   = arr[i];
-                arr[i] = numberBox;
+                var holdTheNumber = arr[randomNumber];
+                arr[randomNumber] = arr[i];
+                arr[i] = holdTheNumber;
             }
         }
     }
