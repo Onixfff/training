@@ -11,27 +11,27 @@ namespace ReadInt
     {
         static void Main(string[] args)
         {
-            int userInput;
-            userInput = ReadData();
-            Console.WriteLine("Вы вывели число" + userInput);
+            int resultConvert;
+            ReadUserInput(out resultConvert);
+            Console.WriteLine("Вы вывели число: " + resultConvert);
             Console.ReadKey();
         }
 
-        static int ReadData()
+        static int ReadUserInput(out int resultConvert)
         {
-            int resultConvert;
             do
             {
                 Console.Write("Введите целое число: ");
                 string userInput = Console.ReadLine();
                 int.TryParse(userInput, out resultConvert);
+
                 if (resultConvert == 0)
                 {
                     Console.WriteLine("Вы ошиблись повторите попытку!\n");
                 }
-                return resultConvert;
             }
             while (resultConvert == 0);
+            return resultConvert;
         }
     }
 }

@@ -5,3 +5,10 @@ F:\Проекты\Проекты c#\ЯЮниор\repository\Functions 19 - 23\Re
 F:\Проекты\Проекты c#\ЯЮниор\repository\Functions 19 - 23\ReadInt 21\ReadInt\obj\Debug\ReadInt.csproj.CoreCompileInputs.cache
 F:\Проекты\Проекты c#\ЯЮниор\repository\Functions 19 - 23\ReadInt 21\ReadInt\obj\Debug\ReadInt.exe
 F:\Проекты\Проекты c#\ЯЮниор\repository\Functions 19 - 23\ReadInt 21\ReadInt\obj\Debug\ReadInt.pdb
+C:\Users\Наталья\program c#\reposit\Functions 19 - 23\ReadInt 21\ReadInt\obj\Debug\ReadInt.csprojAssemblyReference.cache
+C:\Users\Наталья\program c#\reposit\Functions 19 - 23\ReadInt 21\ReadInt\obj\Debug\ReadInt.csproj.CoreCompileInputs.cache
+C:\Users\Наталья\program c#\reposit\Functions 19 - 23\ReadInt 21\ReadInt\obj\Debug\ReadInt.exe
+C:\Users\Наталья\program c#\reposit\Functions 19 - 23\ReadInt 21\ReadInt\obj\Debug\ReadInt.pdb
+C:\Users\Наталья\program c#\reposit\Functions 19 - 23\ReadInt 21\ReadInt\bin\Debug\ReadInt.exe.config
+C:\Users\Наталья\program c#\reposit\Functions 19 - 23\ReadInt 21\ReadInt\bin\Debug\ReadInt.exe
+C:\Users\Наталья\program c#\reposit\Functions 19 - 23\ReadInt 21\ReadInt\bin\Debug\ReadInt.pdb
