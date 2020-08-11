@@ -15,17 +15,17 @@ namespace UIElement
         {
             while (true)
             {
-                CreateBar("Введите сколько у вас жизней  0 - 100 ",ConsoleColor.Red,0);
+                CreateBar("Введите сколько у вас жизней  0 - 100 ", ConsoleColor.Red, 0);
                 CreateBar("Введите сколько у вас маны  0 - 100", ConsoleColor.Blue, 1);
                 Console.ReadKey();
                 Console.Clear();
             }
         }
 
-        static void CreateBar (string text, ConsoleColor color, int position)
-        {
+        static void CreateBar(string text, ConsoleColor color, int position)
+         {
             string startBar, endBar;
-            double userInput;
+            double userInput; 
             TextOutput(text);
             UserInput( out userInput);
             ProcessesTheUserInput(userInput, out startBar, out endBar);
@@ -45,7 +45,7 @@ namespace UIElement
             return userInput;
         }
 
-        static void ProcessesTheUserInput(double userInput , out string startBar, out string endBar, char symbol = '#')
+        static void ProcessesTheUserInput(double userInput, out string startBar, out string endBar, char symbol = '#')
         {
             double barSize = 10;
             int conversionToInterest = 10;
@@ -79,7 +79,6 @@ namespace UIElement
             Console.BackgroundColor = color;
             Console.Write(startBar);
             Console.BackgroundColor = defaultColor;
-
             Console.Write(endBar + "] " + userInput + "%");
         }
 
