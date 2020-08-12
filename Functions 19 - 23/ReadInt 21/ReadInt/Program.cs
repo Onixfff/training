@@ -17,21 +17,21 @@ namespace ReadInt
             Console.ReadKey();
         }
 
-        static int ReadUserInput(out int resultConvert)
+        static void ReadUserInput(out int resultConvert)
         {
+            bool transformation;
             do
             {
                 Console.Write("Введите целое число: ");
                 string userInput = Console.ReadLine();
-                int.TryParse(userInput, out resultConvert);
+                transformation = int.TryParse(userInput, out resultConvert);
 
-                if (resultConvert == 0)
+                if (transformation == false)
                 {
                     Console.WriteLine("Вы ошиблись повторите попытку!\n");
                 }
             }
-            while (resultConvert == 0);
-            return resultConvert;
+            while (transformation == false);
         }
     }
 }

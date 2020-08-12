@@ -28,7 +28,7 @@ namespace UIElement
             double userInput; 
             TextOutput(text);
             UserInput( out userInput);
-            ProcessesTheUserInput(userInput, out startBar, out endBar);
+            FillingBar(userInput, out startBar, out endBar);
             DrawBar(startBar, endBar, position, color, userInput);
             ClearLine(4);
         }
@@ -45,7 +45,7 @@ namespace UIElement
             return userInput;
         }
 
-        static void ProcessesTheUserInput(double userInput, out string startBar, out string endBar, char symbol = '#')
+        static void FillingBar(double userInput, out string startBar, out string endBar, char symbol = '#')
         {
             double barSize = 10;
             int conversionToInterest = 10;
@@ -68,7 +68,9 @@ namespace UIElement
                 }
             }
             else
+            {
                 Error("Вы ввели неправельно проценты");
+            }
         }
 
         static void DrawBar(string startBar, string endBar, int position, ConsoleColor color, double userInput)
