@@ -16,7 +16,7 @@ namespace Kansas_City_Shuffle
             n = Convert.ToInt32(Console.ReadLine());
             int[] arr = new int[n];
             Filling(arr);
-            Output(arr,"Начальный массив");
+            Output(arr, "Начальный массив");
             Shuffle(arr);
             Output(arr, "После перемешивания");
             Console.ReadKey();

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Data;
+using System.Threading;
 
 namespace Brave_new_world
 {
@@ -14,7 +15,7 @@ namespace Brave_new_world
         {
             string Map = "Map1";
             Console.CursorVisible = false;
-            int positionX, positionY, coins = 0, mapCoins = 0,finish1 = 1; ;
+            int positionX, positionY, coins = 0, mapCoins = 0, finish1 = 1; ;
             bool finishMap = true, endGame = true;
             while (endGame)
             {
@@ -22,11 +23,11 @@ namespace Brave_new_world
 
                 while (finishMap)
                 {
-                    DrawMapAndHero(map, positionX, positionY);
-                    HeroWalking(map, ref positionX, ref positionY);
-                    TakeCoins(map,positionX,positionY,ref coins);
-                    ClearMap(map);
                     SwitchMap(ref endGame, ref finishMap, ref Map, ref coins, ref mapCoins, ref finish1);
+                    DrawMapAndHero(map, positionX, positionY);
+                    DirectionFinding(map, Readout(), ref positionX, ref positionY);
+                    TakeCoins(map, positionX, positionY, ref coins);
+                    ClearMap(map);
                 }
                 finishMap = true;
             }
@@ -44,7 +45,7 @@ namespace Brave_new_world
                 {
                     map[i, j] = newFile[i][j];
 
-                    if(map[i,j] == '%')
+                    if (map[i, j] == '%')
                     {
                         mapCoins += 1;
                     }
@@ -92,7 +93,7 @@ namespace Brave_new_world
             Console.Write('@');
         }
 
-        static void SwitchMap(ref bool endGame, ref bool finishMap, ref string Map, ref int coins, ref int mapCoins,ref int numberMap)
+        static void SwitchMap(ref bool endGame, ref bool finishMap, ref string Map, ref int coins, ref int mapCoins, ref int numberMap)
         {
             switch (numberMap)
             {
@@ -125,36 +126,66 @@ namespace Brave_new_world
             }
         }
 
-        static void HeroWalking (char[,] map,ref int positionX, ref int positionY)
+        static ConsoleKeyInfo Readout()
         {
             ConsoleKeyInfo charKey = Console.ReadKey();
+            return charKey;
+        }
+
+        static void DirectionFinding(char[,] map, ConsoleKeyInfo charKey, ref int positionX, ref int positionY)
+        {
+            bool free = true;
             switch (charKey.Key)
             {
                 case ConsoleKey.UpArrow:
-                    if (map[positionX - 1, positionY] != '#')
+                    CollisionСheckX(map, positionX, positionY, -1, ref free);
+                    if (free == true)
                     {
-                        positionX -= 1;
+                        WalkHero(ref positionX, -1);
                     }
                     break;
                 case ConsoleKey.DownArrow:
-                    if (map[positionX + 1, positionY] != '#')
+                    CollisionСheckX(map, positionX, positionY, 1, ref free);
+                    if (free == true)
                     {
-                        positionX += 1;
-                    }
-
-                    break;
-                case ConsoleKey.LeftArrow:
-                    if (map[positionX, positionY - 1] != '#')
-                    {
-                        positionY -= 1;
+                        WalkHero(ref positionX, 1);
                     }
                     break;
                 case ConsoleKey.RightArrow:
-                    if (map[positionX, positionY + 1] != '#')
+                    CollisionСheckY(map, positionX, positionY, 1, ref free);
+                    if (free == true)
                     {
-                        positionY += 1;
+                        WalkHero(ref positionY, 1);
                     }
                     break;
+                case ConsoleKey.LeftArrow:
+                    CollisionСheckY(map, positionX, positionY, -1, ref free);
+                    if (free == true)
+                    {
+                        WalkHero(ref positionY, -1);
+                    }
+                    break;
+            }
+        }
+
+        static void WalkHero(ref int position, int speed)
+        {
+            position += speed;
+        }
+
+        static void CollisionСheckY(char[,] map, int positionX, int positionY, int speed, ref bool free)
+        {
+            if (map[positionX,positionY + speed] == '#')
+            {
+                free = false;
+            }
+        }
+
+        static void CollisionСheckX(char[,] map, int positionX, int positionY, int speed, ref bool free)
+        {
+            if (map[positionX + speed, positionY] == '#')
+            {
+                free = false;
             }
         }
     }
