@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Runtime.DesignerServices;
 using System.Runtime.Remoting.Contexts;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,12 +26,10 @@ namespace UIElement
 
         static void CreateBar(string text, ConsoleColor color, int position)
          {
-            string startBar, endBar;
-            double userInput; 
+            double userInput;
             TextOutput(text);
-            UserInput( out userInput);
-            FillingBar(userInput, out startBar, out endBar);
-            DrawBar(startBar, endBar, position, color, userInput);
+            UserInput(out userInput);
+            FillingBar(userInput, position,color);            
             ClearLine(4);
         }
 
@@ -39,58 +39,85 @@ namespace UIElement
             Console.WriteLine(text);
         }
 
-        static double UserInput(out double userInput)
+        static void UserInput(out double userInput)
         {
-            userInput = Convert.ToDouble(Console.ReadLine());
-            return userInput;
+            userInput = Convert.ToDouble(Console.ReadLine());   
         }
 
-        static void FillingBar(double userInput, out string startBar, out string endBar, char symbol = '#')
+        static void TransferAsAPercentage(ref double x)
         {
-            double barSize = 10;
             int conversionToInterest = 10;
-            startBar = "";
-            endBar = startBar;
+            x /= conversionToInterest;
+            x = Math.Ceiling(x);
+        }
 
-            if (userInput <= 100)
+        static void FillingBar(double userInput, int position, ConsoleColor color)
+        {
+            string Bar;
+            double x = userInput;
+            if (x <= 100)
             {
-                userInput /= conversionToInterest;
-                userInput = Math.Ceiling(userInput);
-
-                for (int i = 0; i < userInput; i++)
+                TransferAsAPercentage(ref x);
+                int j = 1;
+                for (int i = 0; i < 2; i++)
                 {
-                    startBar += symbol;
-                }
-
-                for (double i = userInput; i < barSize; i++)
-                {
-                    endBar += " ";
+                    BarFill(x, j, out Bar);
+                    DrawBar(Bar, position, color, userInput, ref j);
                 }
             }
             else
             {
-                Error("Вы ввели неправельно проценты");
+                Error(position,"Вы ввели неправельно проценты !");
             }
         }
 
-        static void DrawBar(string startBar, string endBar, int position, ConsoleColor color, double userInput)
+        static void BarFill(double userInput, int j , out string Bar,char symbol = '#')
         {
-            ConsoleColor defaultColor = Console.BackgroundColor;
-            Console.SetCursorPosition(0, position);
-            Console.Write("[");
-            Console.BackgroundColor = color;
-            Console.Write(startBar);
-            Console.BackgroundColor = defaultColor;
-            Console.Write(endBar + "] " + userInput + "%");
+            Bar = "";
+            double barSize = 10;
+            switch (j)
+            {
+                case 1:
+                    for (int i = 0; i < userInput; i++)
+                    {
+                        Bar += symbol;
+                    }
+                    break;
+                case 2:
+                    for (double i = userInput; i < barSize; i++)
+                    {
+                        Bar += " ";
+                    }
+                    break;
+            }
         }
 
-        static void Error(string text = "Ошибочка !", ConsoleColor color = ConsoleColor.Red)
+        static void DrawBar(string Bar, int position, ConsoleColor color, double userInput, ref int j)
         {
-            Console.SetCursorPosition(0, 0);
-            ConsoleColor defaultColor = Console.BackgroundColor;
-            Console.BackgroundColor = color;
+            switch (j)
+            {
+                case 1:
+                    ConsoleColor defaultColor = Console.BackgroundColor;
+                    Console.SetCursorPosition(0, position);
+                    Console.Write("[");
+                    Console.BackgroundColor = color;
+                    Console.Write(Bar);
+                    Console.BackgroundColor = defaultColor;
+                    j++;
+                    break;
+                case 2:
+                    Console.Write(Bar + "] " + userInput + "%");
+                    break;
+            }
+        }
+
+        static void Error(int position, string text = "Ошибочка !", ConsoleColor color = ConsoleColor.Red)
+        {
+            Console.SetCursorPosition(0, position);
+            ConsoleColor defaultColor = Console.ForegroundColor;
+            Console.ForegroundColor = color;
             Console.Write(text);
-            Console.BackgroundColor = defaultColor;
+            Console.ForegroundColor = defaultColor;
         }
 
         static void ClearLine(int line)
