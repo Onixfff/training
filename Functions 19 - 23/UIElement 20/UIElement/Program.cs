@@ -58,11 +58,11 @@ namespace UIElement
             if (x <= 100)
             {
                 TransferAsAPercentage(ref x);
-                int j = 1;
+                int drawingStage = 1;
                 for (int i = 0; i < 2; i++)
                 {
-                    BarFill(x, j, out Bar);
-                    DrawBar(Bar, position, color, userInput, ref j);
+                    BarFill(x, drawingStage, out Bar);
+                    DrawBar(Bar, position, color, userInput, ref drawingStage);
                 }
             }
             else
@@ -71,11 +71,11 @@ namespace UIElement
             }
         }
 
-        static void BarFill(double userInput, int j , out string Bar,char symbol = '#')
+        static void BarFill(double userInput, int drawingStage, out string Bar,char symbol = '#')
         {
             Bar = "";
             double barSize = 10;
-            switch (j)
+            switch (drawingStage)
             {
                 case 1:
                     for (int i = 0; i < userInput; i++)
@@ -92,9 +92,9 @@ namespace UIElement
             }
         }
 
-        static void DrawBar(string Bar, int position, ConsoleColor color, double userInput, ref int j)
+        static void DrawBar(string Bar, int position, ConsoleColor color, double userInput, ref int drawingStage)
         {
-            switch (j)
+            switch (drawingStage)
             {
                 case 1:
                     ConsoleColor defaultColor = Console.BackgroundColor;
@@ -103,7 +103,7 @@ namespace UIElement
                     Console.BackgroundColor = color;
                     Console.Write(Bar);
                     Console.BackgroundColor = defaultColor;
-                    j++;
+                    drawingStage++;
                     break;
                 case 2:
                     Console.Write(Bar + "] " + userInput + "%");
