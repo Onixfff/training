@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30309.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brave new world", "Brave new world\Brave new world.csproj", "{A0792221-854E-4026-9960-350D74B1284B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brave new world", "Brave new world\Brave new world.csproj", "{03A79B21-DB70-4B95-B197-25211C141973}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A0792221-854E-4026-9960-350D74B1284B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A0792221-854E-4026-9960-350D74B1284B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A0792221-854E-4026-9960-350D74B1284B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A0792221-854E-4026-9960-350D74B1284B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03A79B21-DB70-4B95-B197-25211C141973}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03A79B21-DB70-4B95-B197-25211C141973}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03A79B21-DB70-4B95-B197-25211C141973}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03A79B21-DB70-4B95-B197-25211C141973}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {70E71AE8-87E9-498F-8351-F6CB27328577}
+		SolutionGuid = {7F7740D9-B7E6-45C0-AF88-074B967D6119}
 	EndGlobalSection
 EndGlobal

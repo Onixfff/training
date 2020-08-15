@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A0792221-854E-4026-9960-350D74B1284B}</ProjectGuid>
+    <ProjectGuid>{03A79B21-DB70-4B95-B197-25211C141973}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Brave_new_world</RootNamespace>
     <AssemblyName>Brave new world</AssemblyName>

@@ -1,7 +1,7 @@
-C:\Users\Наталья\program c#\reposit\Functions 19 - 23\Brave new world 22\Brave new world\bin\Debug\Brave new world.exe.config
-C:\Users\Наталья\program c#\reposit\Functions 19 - 23\Brave new world 22\Brave new world\bin\Debug\Brave new world.exe
-C:\Users\Наталья\program c#\reposit\Functions 19 - 23\Brave new world 22\Brave new world\bin\Debug\Brave new world.pdb
-C:\Users\Наталья\program c#\reposit\Functions 19 - 23\Brave new world 22\Brave new world\obj\Debug\Brave new world.csprojAssemblyReference.cache
-C:\Users\Наталья\program c#\reposit\Functions 19 - 23\Brave new world 22\Brave new world\obj\Debug\Brave new world.csproj.CoreCompileInputs.cache
-C:\Users\Наталья\program c#\reposit\Functions 19 - 23\Brave new world 22\Brave new world\obj\Debug\Brave new world.exe
-C:\Users\Наталья\program c#\reposit\Functions 19 - 23\Brave new world 22\Brave new world\obj\Debug\Brave new world.pdb
+C:\Users\Наталья\program c#\local\неправельные но интересные программы\Brave new world\Brave new world\bin\Debug\Brave new world.exe.config
+C:\Users\Наталья\program c#\local\неправельные но интересные программы\Brave new world\Brave new world\bin\Debug\Brave new world.exe
+C:\Users\Наталья\program c#\local\неправельные но интересные программы\Brave new world\Brave new world\bin\Debug\Brave new world.pdb
+C:\Users\Наталья\program c#\local\неправельные но интересные программы\Brave new world\Brave new world\obj\Debug\Brave new world.csprojAssemblyReference.cache
+C:\Users\Наталья\program c#\local\неправельные но интересные программы\Brave new world\Brave new world\obj\Debug\Brave new world.csproj.CoreCompileInputs.cache
+C:\Users\Наталья\program c#\local\неправельные но интересные программы\Brave new world\Brave new world\obj\Debug\Brave new world.exe
+C:\Users\Наталья\program c#\local\неправельные но интересные программы\Brave new world\Brave new world\obj\Debug\Brave new world.pdb
