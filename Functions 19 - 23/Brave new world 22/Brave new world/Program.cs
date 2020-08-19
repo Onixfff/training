@@ -42,7 +42,7 @@ namespace Brave_new_world
                 if (map[positionX + positionDX, positionY + positionDY] != '#')
                 {
                     Move(ref positionX, ref positionY, positionDX, positionDY);
-                    FruitCounter(map, ref collectDots, positionX, positionY);
+                    GainOfPoints(map, ref collectDots, positionX, positionY);
                 }
 
                 if(collectDots == allDots)
@@ -127,7 +127,7 @@ namespace Brave_new_world
             }
         }
 
-        static void FruitCounter(char[,] map, ref int collectDots, int X, int Y)
+        static void GainOfPoints(char[,] map, ref int collectDots, int X, int Y)
         {
             if (map[X, Y] == '%')
             {
