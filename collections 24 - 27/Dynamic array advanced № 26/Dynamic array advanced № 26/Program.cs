@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Dynamic_array_advanced___26
@@ -11,45 +12,78 @@ namespace Dynamic_array_advanced___26
     {
         static void Main(string[] args)
         {
-            List<int> numbers = new List<int>();
+            string userInput;
 
-            bool addedNumber = true;
             int number;
             int sum;
 
-            while (addedNumber)
-            {
-                Console.Write("Введите число: ");
-                number = Convert.ToInt32(Console.ReadLine());
+            bool addNumber = true;
+            bool exit = false;
+
+            ConsoleColor defaultColor = Console.ForegroundColor;
+
+            List<int> numbers = new List<int>();
+
+            while (exit == false) {
+                do
+                {
+                    Console.WriteLine("Введите целое число или sum");
+                    userInput = Console.ReadLine().ToLower();
+                    addNumber = int.TryParse(userInput, out number);
+                    if (addNumber == false && userInput != "sum")
+                    {
+                        Console.Clear();
+                        Error("Вы ошиблись при вводе. Попробуйте ещё раз", ConsoleColor.Red, defaultColor);
+
+                    }
+                } while (addNumber == false && userInput != "sum");
 
                 numbers.Add(number);
 
-                Console.WriteLine("Вывечти sum всех ваших чисел?" +
-                    "\nда или нет");
-
-                if (Console.ReadLine().ToLower() == "да")
+                if (userInput == "sum")
                 {
-                    sum = 0;
+                    Sum(out sum, numbers);
 
-                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Blue;
 
-                    foreach (var numberArray in numbers)
+                    Console.WriteLine($"Результат: {sum}" +
+                        $"\nВведите Exit если хотете завершить программу " +
+                        $"\n\t\t\tили" +
+                        $"\nsum ещё раз, чтобы начать программу занова.");
+
+                    Console.ForegroundColor = defaultColor;
+
+                    userInput = (Console.ReadLine().ToLower());
+
+                    if (userInput == "exit")
                     {
-                        sum += numberArray;
+                        exit = true;
                     }
-
-                    Console.WriteLine("Сумма всех чисел: " + sum + 
-                        "\nПродолжить ?" +
-                        "\nда или нет");
-
-                    if (Console.ReadLine().ToLower() == "нет")
+                    else if(userInput == "sum")
                     {
-                        addedNumber = false;
+                        sum = 0;
                     }
 
                     Console.Clear();
                 }
             }
+        }
+
+        static void Sum(out int sum, List<int> numbers)
+        {
+            sum = 0;
+            foreach (var result in numbers)
+            {
+                sum += result;
+            }
+        }
+
+        static void Error(string text, ConsoleColor color, ConsoleColor defaultColor)
+        {
+            Console.Clear();
+            Console.ForegroundColor = color;
+            Console.WriteLine($"{text}");
+            Console.ForegroundColor = defaultColor;
         }
     }
 }
