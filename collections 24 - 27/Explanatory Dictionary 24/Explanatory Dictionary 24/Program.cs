@@ -73,14 +73,14 @@ namespace Explanatory_Dictionary_24
 
             while (isExit == false)
             {
-                Console.WriteLine("Введите имя типа данных о котором хотите узнать.");
+                Console.WriteLine("Введите имя типа данных о котором хотите узнать или exit для выхода");
                 userInput = Console.ReadLine().ToLower();
 
-                bool yes = false;
+                bool found = false;
 
-                yes = dataType.ContainsKey(userInput);
+                found = dataType.ContainsKey(userInput);
 
-                if (yes)
+                if (found)
                 {
                     foreach (var variables in dataType)
                     {
@@ -92,6 +92,10 @@ namespace Explanatory_Dictionary_24
                             break;
                         }
                     }
+                }
+                else if(userInput == "exit")
+                {
+                    isExit = true;
                 }
                 else
                 {
