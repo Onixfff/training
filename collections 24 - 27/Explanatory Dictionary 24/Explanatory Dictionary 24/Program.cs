@@ -13,7 +13,7 @@ namespace Explanatory_Dictionary_24
         {
             Dictionary<string, string> dataType = new Dictionary<string, string>();
 
-            bool isExit = false;
+            bool exit = false;
 
             string userInput;
             dataType.Add("int", "Тип целочисленных значений." +
@@ -71,7 +71,7 @@ namespace Explanatory_Dictionary_24
 
             Console.WriteLine("Это словарь типов данных на языке c#");
 
-            while (isExit == false)
+            while (exit == false)
             {
                 Console.WriteLine("Введите имя типа данных о котором хотите узнать или exit для выхода");
                 userInput = Console.ReadLine().ToLower();
@@ -95,7 +95,7 @@ namespace Explanatory_Dictionary_24
                 }
                 else if(userInput == "exit")
                 {
-                    isExit = true;
+                    exit = true;
                 }
                 else
                 {
