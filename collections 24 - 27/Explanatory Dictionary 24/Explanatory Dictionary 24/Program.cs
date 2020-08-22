@@ -82,16 +82,9 @@ namespace Explanatory_Dictionary_24
 
                 if (found)
                 {
-                    foreach (var variables in dataType)
-                    {
-                        if (variables.Key == (userInput))
-                        {
-                            Console.Clear();
-                            Console.WriteLine($"\tТип данных - {variables.Key}" +
-                                   $"\n{variables.Key} - {variables.Value}\n");
-                            break;
-                        }
-                    }
+                    Console.Clear();
+                    Console.WriteLine($"\t\tТип данных - {userInput}" +
+                        $"\n{dataType[userInput]}\n");
                 }
                 else if(userInput == "exit")
                 {
