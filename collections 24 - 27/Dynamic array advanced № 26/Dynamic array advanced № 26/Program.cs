@@ -69,7 +69,7 @@ namespace Dynamic_array_advanced___26
             }
         }
 
-        static void Sum(out int sum, List<int> numbers)
+        static void Sum(out int sum, List<int> numbers) 
         {
             sum = 0;
             foreach (var result in numbers)
