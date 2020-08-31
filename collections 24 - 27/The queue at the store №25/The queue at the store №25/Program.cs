@@ -19,21 +19,23 @@ namespace The_queue_at_the_store__25
             int bank = 0;
             int PurchaseAmount;
             int maxBuyers = rnd.Next(10, 21);
-            int buyer = 1;
 
             bool exit = false;
 
+            for(int i = 0; i < maxBuyers; i++)
+            {
+                buyers.Enqueue(i);
+            }
+
             while (exit == false)
             {
-                if (buyers.Count < maxBuyers)
+                if (buyers.Count != 0)
                 {
-                    buyers.Enqueue(buyer);
-                    Console.WriteLine($"На кассе в очереди {buyers.Count}/{maxBuyers}");
-                    Console.WriteLine("Клиент №" + buyers.Count);
+                    Console.WriteLine("Покупателей осталось - " + buyers.Count);
                     Console.Write("Введите суму покупки - ");
                     PurchaseAmount = Convert.ToInt32(Console.ReadLine());
                     bank += PurchaseAmount;
-                    buyer++;
+                    buyers.Dequeue();
                     Console.WriteLine("Банк - " + bank);
                     Console.ReadKey();
                     Console.Clear();
