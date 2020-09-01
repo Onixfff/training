@@ -22,30 +22,24 @@ namespace The_queue_at_the_store__25
 
             bool exit = false;
 
-            for(int i = 0; i < maxBuyers; i++)
+            for (int i = 0; i < maxBuyers; i++)
             {
-                buyers.Enqueue(i);
+                PurchaseAmount = rnd.Next(100, 10001);
+                buyers.Enqueue(PurchaseAmount);
             }
 
             while (exit == false)
             {
-                if (buyers.Count != 0)
+                for(int i = 0; i < maxBuyers; i++)
                 {
-                    Console.WriteLine("Покупателей осталось - " + buyers.Count);
-                    Console.Write("Введите суму покупки - ");
-                    PurchaseAmount = Convert.ToInt32(Console.ReadLine());
-                    bank += PurchaseAmount;
-                    buyers.Dequeue();
-                    Console.WriteLine("Банк - " + bank);
+                    Console.WriteLine("Клиент номер - " + (i + 1) + "/" + maxBuyers + "\nСумма покупки - " + buyers.Peek());
+                    Console.WriteLine("Банк = " + bank + " руб");
+                    bank += buyers.Dequeue();
                     Console.ReadKey();
                     Console.Clear();
                 }
-                else
-                {
-                    exit = true;
-                }
+                exit = true;
             }
-            Console.ReadKey();
         }
     }
 }
