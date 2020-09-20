@@ -17,7 +17,7 @@ namespace Player_database__30
             Error error = new Error();
 
             bool exit = false;
-            bool e;
+            bool meny;
 
             string userInput;
 
@@ -29,30 +29,30 @@ namespace Player_database__30
                 Console.Write("1: Добавить игрока.\n2: Забанить игрока по порядковому номеру.\n3: Разбанить игрока.\n4: Удалить игрока \n5: Выход\nВыберете пункт:");
                 userInput = Console.ReadLine();
 
-                e = int.TryParse(userInput, out int item);
+                meny = int.TryParse(userInput, out int item);
 
-                if (e == true)
+                if (meny == true)
                 {
                     switch (item)
                     {
                         case 1:
-                            Console.WriteLine("Введите name");
+                            Console.Write("Введите nickname: ");
                             userInput = Console.ReadLine();
                             
                             players.addPlayer(userInput);
                             players.ShowPlayers();
                             break;
                         case 2:
-                            Fry(ref e,"Введите id игрока для бана: ", out id);
-                            RRR(e, id, players, 1, error);
+                            CheckingForInt(ref meny,"Введите id игрока для бана: ", out id);
+                            MakesATaskAndShowsTheResult(id, players, 1, error);
                             break;
                         case 3:
-                            Fry(ref e, "Введите id игрока для бана: ", out id);
-                            RRR(e,id,players,2,error);
+                            CheckingForInt(ref meny, "Введите id игрока для бана: ", out id);
+                            MakesATaskAndShowsTheResult(id,players,2,error);
                             break;
                         case 4:
-                            Fry(ref e, "Введите id игрока для удаление игрока: ", out id);
-                            RRR(e, id, players, 3, error);
+                            CheckingForInt(ref meny, "Введите id игрока для удаление игрока: ", out id);
+                            MakesATaskAndShowsTheResult(id, players, 3, error);
                             break;
                         case 5:
                             exit = true;
@@ -66,21 +66,14 @@ namespace Player_database__30
                 }
             }
         }
-        //Поменять название
-        static void RRR(bool e, int id, Players players, int process, Error error)
+
+        static void MakesATaskAndShowsTheResult(int id, Players players, int process, Error error)
         {
-            if (e)
-            {
-                players.SearchPlayerById(id, process);
+                players.MenuProgram(id, process);
                 players.ShowPlayers();
-            }
-            else
-            {
-                error.ShowError("Скорее всего вы нажали не на ту кнопку!");
-            }
         }
-        //Поменять название
-        static void Fry(ref bool e, string text, out int number)
+
+        static void CheckingForInt(ref bool e, string text, out int number)
         {
             string userInput;
 
@@ -110,8 +103,8 @@ namespace Player_database__30
         {
             _players.Add(new Player(name, lvl, ban));
         }
-        //Поменять название
-        public void SearchPlayerById (int id, int process)
+
+        public void MenuProgram (int id, int process)
         {
             for (int i = 0; i < _players.Count; i++)
             {
@@ -132,10 +125,6 @@ namespace Player_database__30
                             ShowError("Ошибка программы");
                             break;
                     }
-                }
-                else
-                {
-                    ShowError("Скорее всего вы нажали не на ту кнопку!");
                 }
             }
         }
