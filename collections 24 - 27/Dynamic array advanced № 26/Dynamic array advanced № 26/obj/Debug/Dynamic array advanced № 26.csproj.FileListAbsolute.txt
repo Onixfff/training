@@ -5,3 +5,10 @@ C:\Users\Наталья\program c#\reposit\collections 24 - 27\Dynamic array adv
 C:\Users\Наталья\program c#\reposit\collections 24 - 27\Dynamic array advanced № 26\Dynamic array advanced № 26\obj\Debug\Dynamic array advanced № 26.csproj.CoreCompileInputs.cache
 C:\Users\Наталья\program c#\reposit\collections 24 - 27\Dynamic array advanced № 26\Dynamic array advanced № 26\obj\Debug\Dynamic array advanced № 26.exe
 C:\Users\Наталья\program c#\reposit\collections 24 - 27\Dynamic array advanced № 26\Dynamic array advanced № 26\obj\Debug\Dynamic array advanced № 26.pdb
+F:\Проекты\Проекты c#\ЯЮниор\repository\collections 24 - 27\Dynamic array advanced № 26\Dynamic array advanced № 26\bin\Debug\Dynamic array advanced № 26.exe.config
+F:\Проекты\Проекты c#\ЯЮниор\repository\collections 24 - 27\Dynamic array advanced № 26\Dynamic array advanced № 26\bin\Debug\Dynamic array advanced № 26.exe
+F:\Проекты\Проекты c#\ЯЮниор\repository\collections 24 - 27\Dynamic array advanced № 26\Dynamic array advanced № 26\bin\Debug\Dynamic array advanced № 26.pdb
+F:\Проекты\Проекты c#\ЯЮниор\repository\collections 24 - 27\Dynamic array advanced № 26\Dynamic array advanced № 26\obj\Debug\Dynamic array advanced № 26.csprojAssemblyReference.cache
+F:\Проекты\Проекты c#\ЯЮниор\repository\collections 24 - 27\Dynamic array advanced № 26\Dynamic array advanced № 26\obj\Debug\Dynamic array advanced № 26.csproj.CoreCompileInputs.cache
+F:\Проекты\Проекты c#\ЯЮниор\repository\collections 24 - 27\Dynamic array advanced № 26\Dynamic array advanced № 26\obj\Debug\Dynamic array advanced № 26.exe
+F:\Проекты\Проекты c#\ЯЮниор\repository\collections 24 - 27\Dynamic array advanced № 26\Dynamic array advanced № 26\obj\Debug\Dynamic array advanced № 26.pdb
