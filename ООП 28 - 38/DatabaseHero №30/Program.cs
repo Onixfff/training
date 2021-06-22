@@ -49,43 +49,13 @@ namespace DatabaseHero
                             }
                             break;
                         case 3:
-                            bool checkId = false;
-                            while(checkId == false)
-                            {
-                                Console.Write("Введите id игрока: ");
-                                userInput = Console.ReadLine();
-                                int id;
-                                checkId = int.TryParse(userInput, out id);
-                                if(checkId == true)
-                                {
-                                    check = database.CheckPlayer(id);
-                                    if(check == true)
-                                    {
-                                        database.BanPlayer(id);
-                                    }
-                                }
-                            }
+                            ShowDialogBanOrUnban(database, true);
                             break;
                         case 4:
-                            checkId = false;
-                            while (checkId == false)
-                            {
-                                Console.Write("Введите id игрока: ");
-                                userInput = Console.ReadLine();
-                                int id;
-                                checkId = int.TryParse(userInput, out id);
-                                if (checkId == true)
-                                {
-                                    check = database.CheckPlayer(id);
-                                    if (check == true)
-                                    {
-                                        database.UnbanPlayer(id);
-                                    }
-                                }
-                            }
+                            ShowDialogBanOrUnban(database, false);
                             break;
                         case 5:
-                            database.DelitePlayer();
+                            database.DeletePlayer();
                             break;
                         default:
                             Console.WriteLine("Такого пункта меню нету");
@@ -97,6 +67,31 @@ namespace DatabaseHero
                     Console.WriteLine("Такого пункта меню нету");
                 }
                 Console.ReadKey();
+                Console.Clear();
+            }
+        }
+        public static void ShowDialogBanOrUnban(Database database,bool ban)
+        {
+            string userInput;
+            bool check;
+            bool checkId = false;
+            while (checkId == false)
+            {
+                Console.Write("Введите id игрока: ");
+                userInput = Console.ReadLine();
+                int id;
+                checkId = int.TryParse(userInput, out id);
+                if (checkId == true)
+                {
+                    check = database.CheckPlayer(id);
+                    if (check == true)
+                    {
+                        if(ban == true)
+                            database.BanPlayer(id);
+                        else
+                            database.UnbanPlayer(id);
+                    }
+                }
             }
         }
     }
@@ -107,18 +102,12 @@ namespace DatabaseHero
 
         public void BanPlayer(int id)
         {
-            foreach (var player in players)
-            {
-                player.BanPlayer(id);
-            }
+            players[id - 1].BanPlayer(id);
         }
 
         public void UnbanPlayer(int id)
         {
-            foreach (var player in players)
-            {
-                player.Unban(id);
-            }
+            players[id - 1].UnbanPlayer(id);
         }
 
         public void AddPlayer(string name, int lvl)
@@ -134,7 +123,7 @@ namespace DatabaseHero
             }
         }
 
-        public void DelitePlayer()
+        public void DeletePlayer()
         {
             bool checkInt = false;
             while (checkInt == false)
@@ -148,7 +137,7 @@ namespace DatabaseHero
                     bool check = CheckPlayer(userId);
                     if(check == true)
                     {
-                        players.RemoveRange(userId - 1, 1);
+                        players.RemoveAt(userId - 1);
                         Console.WriteLine("Игрок удалён из базы данных");
                     }
                     else
@@ -199,7 +188,7 @@ namespace DatabaseHero
             }
         }
 
-        public void Unban(int id)
+        public void UnbanPlayer(int id)
         {
             if(Id == id)
             {
