@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CDE1D751-5E61-4F3E-9708-97F47E7198CD}</ProjectGuid>
+    <ProjectGuid>{07A35280-5331-480A-8F36-FA073C2CC46D}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Player_database__30</RootNamespace>
-    <AssemblyName>Player database №30</AssemblyName>
+    <RootNamespace>DatabaseHero</RootNamespace>
+    <AssemblyName>DatabaseHero</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
