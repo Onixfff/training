@@ -19,7 +19,7 @@ namespace Basics_of_programming_number_3
             
             Console.WriteLine("Сколько рядов хотите вывести?");
             howManyRows = Convert.ToInt32(Console.ReadLine());
-            enoughPictutes = pictures >= row * howmanyrows;
+            enoughPictutes = pictures >= row * howManyRows;
             howManyRows *= Convert.ToInt32(enoughPictutes);
             NumberOfPicturesOnScreen = row * howManyRows;
             NoPicturesNeeded = pictures - NumberOfPicturesOnScreen;

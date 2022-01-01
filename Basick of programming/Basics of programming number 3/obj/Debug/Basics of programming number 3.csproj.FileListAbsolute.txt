@@ -12,3 +12,10 @@ F:\Проекты\Проекты c#\ЯЮниор\repository\Basick of programmin
 F:\Проекты\Проекты c#\ЯЮниор\repository\Basick of programming\Basics of programming number 3\obj\Debug\Basics of programming number 3.csproj.CoreCompileInputs.cache
 F:\Проекты\Проекты c#\ЯЮниор\repository\Basick of programming\Basics of programming number 3\obj\Debug\Basics of programming number 3.exe
 F:\Проекты\Проекты c#\ЯЮниор\repository\Basick of programming\Basics of programming number 3\obj\Debug\Basics of programming number 3.pdb
+D:\Программирование\c#\IUnior\Basick of programming\Basics of programming number 3\bin\Debug\Basics of programming number 3.exe.config
+D:\Программирование\c#\IUnior\Basick of programming\Basics of programming number 3\bin\Debug\Basics of programming number 3.exe
+D:\Программирование\c#\IUnior\Basick of programming\Basics of programming number 3\bin\Debug\Basics of programming number 3.pdb
+D:\Программирование\c#\IUnior\Basick of programming\Basics of programming number 3\obj\Debug\Basics of programming number 3.csprojAssemblyReference.cache
+D:\Программирование\c#\IUnior\Basick of programming\Basics of programming number 3\obj\Debug\Basics of programming number 3.csproj.CoreCompileInputs.cache
+D:\Программирование\c#\IUnior\Basick of programming\Basics of programming number 3\obj\Debug\Basics of programming number 3.exe
+D:\Программирование\c#\IUnior\Basick of programming\Basics of programming number 3\obj\Debug\Basics of programming number 3.pdb
