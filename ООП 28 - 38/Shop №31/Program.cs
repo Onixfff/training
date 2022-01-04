@@ -10,8 +10,8 @@ namespace Shop__31
     {
         static void Main()
         {
-            Seller seller = new Seller();
-            Player player = new Player();
+            Seller seller = new Seller(new List<Product> { new Product("Конфета", 2, 40), new Product("Телевизор", 250, 2), new Product("Дом", 2000, 1), new Product("Окно", 2330, 42) });
+            Player player = new Player(new List<Product>());
             while (true)
             {
                 int cursorTitle = 24;
@@ -26,7 +26,7 @@ namespace Shop__31
                     case 1:
                         Console.CursorLeft = cursorTitle;
                         Console.WriteLine("Инвентарь продавца");
-                        seller.ShowItem(seller.products);
+                        seller.ShowItems();
                         Console.Write("Приобрести товар?\n1.Да\n2.Нет\n");
                         userInput = Console.ReadLine();
                         numberMenu = CheckInputInt(userInput);
@@ -46,7 +46,7 @@ namespace Shop__31
                                     bool checkQuantity = seller.CheckQuantity(idItem, quantityBuy);
                                     if(checkQuantity == true)
                                     {
-                                        if(player.money >= seller.products[idItem].Price * quantityBuy)
+                                        if(player.money >= seller.GetShowCost(idItem) * quantityBuy)
                                         {
                                             Console.WriteLine("Подтверждение покупки\n1.Да\n2.Нет");
                                             userInput = Console.ReadLine();
@@ -55,8 +55,7 @@ namespace Shop__31
                                             {
                                                 case 1:
                                                     idItem--;
-                                                    player.products.Add(new Product(seller.products[idItem].Name, seller.products[idItem].Price, quantityBuy));
-                                                    player.AddProduct(seller.products[idItem].Name, seller.products[idItem].Price, quantityBuy);
+                                                    player.AddProduct( new Product(seller.GetShowName(idItem), seller.GetShowCost(idItem), quantityBuy));
                                                     Console.WriteLine("Покупка произведена");
                                                     break;
                                                 case 2:
@@ -69,7 +68,7 @@ namespace Shop__31
                                         }
                                         else
                                         {
-                                            Console.WriteLine("Проблема с отплатой вам не хватает денег\nУ вас " + player.money + " а товар стоит "+ seller.products[idItem].Price * quantityBuy);
+                                            Console.WriteLine("Проблема с отплатой вам не хватает денег\nУ вас " + player.money + " а товар стоит "+ seller.GetShowCost(idItem) * quantityBuy);
                                         }
                                     }
                                 }
@@ -88,7 +87,7 @@ namespace Shop__31
                     case 2:
                         Console.CursorLeft = cursorTitle;
                         Console.WriteLine("Инвентарь персонажа");
-                        player.ShowItem(player.products);
+                        player.ShowItems();
                         break;
                     default:
                         Console.WriteLine("Такого пункта в меню нету");
@@ -109,45 +108,16 @@ namespace Shop__31
         }
     }
 
-    class Player: Exchange
+    class Player : BaseDealer
     {
+        public Player(List<Product> products) : base(products) { }
         public int money { get; private set; } = 2000;
-        public List<Product> products { get; private set; } = new List<Product>();
-
-        public void AddProduct(string name, int price , int coll)
-        {
-            products.Add(new Product(name, price, coll));
-        }
     }
 
-    class Seller : Exchange
+    class Seller : BaseDealer
     {
+        public Seller(List<Product> products) : base(products) { }
         public int money { get; private set; } = 500;
-        public List<Product> products { get; private set; } = new List<Product>() { new Product("Конфета", 2, 40), new Product("Телевизор", 250, 2), new Product("Дом", 2000, 1), new Product("Окно", 2330, 42) };
-
-        public bool CheckIdItem(int id)
-        {
-            bool check;
-            foreach (var product in products)
-            {
-                check = product.CheckItem(id);
-                if(check == true)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public bool CheckQuantity(int id, int quantity)
-        {
-            if(id == products[--id].Id)
-            {
-                if (quantity <= products[id].Quantity && quantity != 0)
-                    return true;
-            }
-            return false;
-        }
     }
 
     class Product
@@ -160,7 +130,7 @@ namespace Shop__31
 
         public Product(string name, int price, int quantity)
         {
-            Id = _LastId++;
+            Id = ++_LastId;
             Name = name;
             Price = price;
             Quantity = quantity;
@@ -168,7 +138,7 @@ namespace Shop__31
 
         public void ShowItem()
         {
-            Console.WriteLine($"{++Id}|{Name}|{Quantity}.Шт|{Price}.руб|\n");
+            Console.WriteLine($"{Id}|{Name}|{Quantity}.Шт|{Price}.руб|\n");
         }
 
         public bool CheckItem(int id)
@@ -179,15 +149,58 @@ namespace Shop__31
         }
     }
 
-    abstract class Exchange
+    class BaseDealer
     {
-        public void ShowItem(List<Product> products)
+        private List<Product> _products = new List<Product>();
+        public BaseDealer(List<Product> products)
+        {
+            _products = products;
+        }
+        public virtual void ShowItems()
         {
             Console.WriteLine("№| Наименование товара |Кол-во | Цена|");
-            foreach (var product in products)
+            foreach (var product in _products)
             {
                 product.ShowItem();
             }
+        }
+        public void AddProduct(Product product)
+        {
+            _products.Add(product);
+        }
+        public int GetShowCost(int id)
+        {
+            return _products[id].Price;
+        }
+        public string GetShowName(int id)
+        {
+            return _products[id].Name;
+        }
+        public bool CheckIdItem(int id)
+        {
+            bool check;
+            foreach (var product in _products)
+            {
+                check = product.CheckItem(id);
+                if (check == true)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public bool CheckQuantity(int id, int quantity)
+        {
+            if (id == _products[--id].Id)
+            {
+                if (quantity <= _products[id].Quantity && quantity > 0)
+                    return true;
+            }
+            else
+            {
+                Console.WriteLine("Номер товара отсутствует");
+            }
+            return false;
         }
     }
 }
