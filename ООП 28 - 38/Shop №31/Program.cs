@@ -10,8 +10,8 @@ namespace Shop__31
     {
         static void Main()
         {
-            Seller seller = new Seller(new List<Product> { new Product("Конфета", 2, 40), new Product("Телевизор", 250, 2), new Product("Дом", 2000, 1), new Product("Окно", 2330, 42) });
-            Player player = new Player(new List<Product>());
+            Seller seller = new Seller(new List<Product> { new Product("Конфета", 2, 40), new Product("Телевизор", 250, 2), new Product("Дом", 2000, 1), new Product("Окно", 2330, 42) }, 500);
+            Player player = new Player(new List<Product>(), 2000);
             while (true)
             {
                 int cursorTitle = 24;
@@ -54,6 +54,7 @@ namespace Shop__31
                                             switch (numberMenu)
                                             {
                                                 case 1:
+                                                    player.money = player.money - quantityBuy;
                                                     idItem--;
                                                     player.AddProduct( new Product(seller.GetShowName(idItem), seller.GetShowCost(idItem), quantityBuy));
                                                     Console.WriteLine("Покупка произведена");
@@ -110,14 +111,12 @@ namespace Shop__31
 
     class Player : BaseDealer
     {
-        public Player(List<Product> products) : base(products) { }
-        public int money { get; private set; } = 2000;
+        public Player(List<Product> products, int money) : base(products, money) { }
     }
 
     class Seller : BaseDealer
     {
-        public Seller(List<Product> products) : base(products) { }
-        public int money { get; private set; } = 500;
+        public Seller(List<Product> products, int money) : base(products, money) { }
     }
 
     class Product
@@ -125,7 +124,7 @@ namespace Shop__31
         public int Id { get; private set; }
         public string Name { get; private set; }
         public int Price { get; private set; }
-        public int Quantity { get; private set; }
+        public int Quantity { get; private set; } //Кол-во
         private static int _LastId;
 
         public Product(string name, int price, int quantity)
@@ -148,13 +147,18 @@ namespace Shop__31
             return false;
         }
     }
-
     class BaseDealer
     {
+        ///TODO сделать (Сделать чтобы цена убывала, Сделать каждому торговцу свой id товара на который он будет ссылаться.)
+        ///HACK не работает
+        ///UNDONE Скорее всего передалать полностью
+        ///UnresolvedMergeConflict не знаю
         private List<Product> _products = new List<Product>();
-        public BaseDealer(List<Product> products)
+        private int _money;
+        public BaseDealer(List<Product> products, int money)
         {
             _products = products;
+            _money = money;
         }
         public virtual void ShowItems()
         {
@@ -201,6 +205,10 @@ namespace Shop__31
                 Console.WriteLine("Номер товара отсутствует");
             }
             return false;
+        }
+        public void MinusMoney(int money)
+        {
+            _money = _money - money;
         }
     }
 }
