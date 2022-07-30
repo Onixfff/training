@@ -31,9 +31,11 @@ namespace checking_the_closure_of_brackets
                     {
                         maxDepth = depth;
                     }
+
                     depth --;
                 }
             }
+
             Console.WriteLine($"Максимальная глубина = " + maxDepth);
             Console.ReadKey();
         }
