@@ -12,17 +12,19 @@ namespace ConsoleApp1
         {
             Random random = new Random();
             
-            int randomNumber = random.Next(0,100);
-            int reducedNumber = randomNumber;
+            int firstMultiple = 3;
+            int secondMultiple = 5;
+            int minRandom = 0;
+            int maxRandom = 100;
+            int randomNumber = random.Next(minRandom, maxRandom);
             int sum = 0;
 
-            while (reducedNumber > 0)
+            for(int reducedNumber = randomNumber; reducedNumber > 0; reducedNumber--)
             {
-                if (reducedNumber % 3 == 0 || reducedNumber % 5 == 0)
+                if (reducedNumber % firstMultiple == 0 || reducedNumber % secondMultiple == 0)
                 {
                     sum = sum + reducedNumber;
                 }
-                reducedNumber--;
             }
 
             Console.WriteLine($"{randomNumber}\n{sum}");
