@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "checking the closure of brackets", "checking the closure of brackets\checking the closure of brackets.csproj", "{438C0DE8-CF05-49D3-85A7-CAAED094BC2B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{438C0DE8-CF05-49D3-85A7-CAAED094BC2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{438C0DE8-CF05-49D3-85A7-CAAED094BC2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{438C0DE8-CF05-49D3-85A7-CAAED094BC2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{438C0DE8-CF05-49D3-85A7-CAAED094BC2B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8C2E87DA-5AB6-48D9-BE81-1C3AC6833561}
+	EndGlobalSection
+EndGlobal
