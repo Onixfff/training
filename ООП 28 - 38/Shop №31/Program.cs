@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Shop__31
 {
@@ -10,8 +11,9 @@ namespace Shop__31
     {
         static void Main()
         {
-            Seller seller = new Seller(new List<Product> { new Product("Конфета", 2, 40, 1), new Product("Телевизор", 250, 2, 15), new Product("Дом", 2000, 1, 1000), new Product("Окно", 2330, 42, 20) });
-            Player player = new Player(new List<Product>());
+            Debug.Fail("Ошибка");
+            Seller seller = new Seller(new List<Product> { new Product("Конфета", 2, 40, 1), new Product("Телевизор", 250, 2, 15), new Product("Дом", 2000, 1, 1000), new Product("Окно", 2330, 42, 20) }, 100000);
+            Player player = new Player(new List<Product>(), 2);
             while (true)
             {
                 int cursorTitle = 24;
@@ -33,11 +35,13 @@ namespace Shop__31
                         switch (numberMenu)
                         {
                             case 1:
+                                //HACK Создать метод для вывода у игроков статы с деньгами и весом.
                                 Console.WriteLine($"\nВаши:\n1.Деньги - {player.money}.руб\n2.Вес - {player.maxWeight}/{player.weight}.Кг\n");
                                 Console.Write("Выбирите номер товара для покупки: ");
                                 userInput = Console.ReadLine();
                                 int idItem = CheckInputInt(userInput);
                                 bool checkId = seller.CheckIdItem(idItem);
+                                idItem -= 1;
                                 if(checkId == true)
                                 {
                                     Console.Write("Введите кол-во покупаемого товара: ");
@@ -54,8 +58,10 @@ namespace Shop__31
                                             switch (numberMenu)
                                             {
                                                 case 1:
-                                                    player.money = player.money - quantityBuy;
-                                                    idItem--;
+                                                    //HACK исправить idItem чтобы небыло в basedealer --id.
+                                                    //TODO Добавить сравнения чтобы недобавлялись повторки, а прибовлялось кол-во товара.
+                                                    //HACK quantityBuy если == 0 то убирать из списка у продавца.
+                                                    player.SubtractionMoney(quantityBuy * seller.GetCost(idItem));
                                                     player.AddProduct( new Product(seller.GetName(idItem), seller.GetCost(idItem), quantityBuy, seller.GetWeight(idItem)));
                                                     Console.WriteLine("Покупка произведена");
                                                     break;
@@ -71,6 +77,10 @@ namespace Shop__31
                                         {
                                             Console.WriteLine("Проблема с отплатой вам не хватает денег\nУ вас " + player.money + " а товар стоит "+ seller.GetCost(idItem) * quantityBuy);
                                         }
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine($"Такого кол-ва товара нету в наличии {quantityBuy}/{seller.GetQuantity(idItem)}");
                                     }
                                 }
                                 else
@@ -88,6 +98,8 @@ namespace Shop__31
                     case 2:
                         Console.CursorLeft = cursorTitle;
                         Console.WriteLine("Инвентарь персонажа");
+                        Console.WriteLine($"Деньги - {player.money}.руб\n" +
+                            $"Вес - {player.weight}.Кг");
                         player.ShowItems();
                         break;
                     default:
@@ -111,14 +123,15 @@ namespace Shop__31
 
     class Player : BaseDealer
     {
+        //HACK lastid брать из игрока.
         public int maxWeight { get; private set; } = 20;
-        public int money { get; private set; } = 2000;
         public int weight { get; private set; } = 0;
-        public Player(List<Product> products) : base(products) { }
+        public Player(List<Product> products, int money) : base(products, money) { }
     }
 
     class Seller : BaseDealer
     {
+        //HACK lastid брать из продавца.
         public Seller(List<Product> products, int money) : base(products, money) { }
     }
 
@@ -133,7 +146,7 @@ namespace Shop__31
 
         public Product(string name, int price, int quantity, int weight)
         {
-            Id = ++_LastId;
+            Id = _LastId ++;
             Name = name;
             Price = price;
             Quantity = quantity;
@@ -142,28 +155,24 @@ namespace Shop__31
 
         public void ShowItem()
         {
-            Console.WriteLine($"{Id} | {Name} | {Quantity}.Шт | {Price}.Руб | {Weight}.Кг\n");
+            Console.WriteLine($"{++Id} | {Name} | {Quantity}.Шт | {Price}.Руб | {Weight}.Кг\n");
         }
 
         public bool CheckItem(int id)
         {
-            if(id == Id)
+            if(Id == id)
                 return true;
             return false;
         }
     }
     class BaseDealer
     {
-        ///TODO сделать (Сделать чтобы цена убывала, Сделать каждому торговцу свой id товара на который он будет ссылаться.)
-        ///HACK не работает
-        ///UNDONE Скорее всего передалать полностью
-        ///UnresolvedMergeConflict не знаю
         private List<Product> _products = new List<Product>();
-        private int _money;
+        public int money { get; private set; }
         public BaseDealer(List<Product> products, int money)
         {
             _products = products;
-            _money = money;
+            this.money = money;
         }
         public virtual void ShowItems()
         {
@@ -189,6 +198,10 @@ namespace Shop__31
         {
             return _products[id].Weight;
         }
+        public int GetQuantity(int id)
+        {
+            return _products[id].Quantity;
+        }
         public bool CheckIdItem(int id)
         {
             bool check;
@@ -204,20 +217,13 @@ namespace Shop__31
         }
         public bool CheckQuantity(int id, int quantity)
         {
-            if (id == _products[--id].Id)
-            {
-                if (quantity <= _products[id].Quantity && quantity > 0)
-                    return true;
-            }
-            else
-            {
-                Console.WriteLine("Номер товара отсутствует");
-            }
+            if (quantity <= _products[id].Quantity && quantity > 0)
+                return true;
             return false;
         }
-        public void MinusMoney(int money)
+        public void SubtractionMoney(int price)
         {
-            _money = _money - money;
+            money -= price;
         }
     }
 }
