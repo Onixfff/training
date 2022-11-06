@@ -10,22 +10,24 @@ namespace multiples
     {
         static void Main(string[] args)
         {
-            int n;
-            int furstElement = 1;
-            int secondElement = 2;
-            List<int> threeDigitNumbers = new List<int>();
+            long result = 0;
+            int min = 7;
+            int max = 27;
 
-            for (n = 1; n <= 27; n++)
+            for(int firstDigit = 1; firstDigit < 9; ++firstDigit)
             {
-                Console.Write(n + " - ");
-                for (int i = 100; i < 1000; i++)
+                for(int secondDigit = 0; secondDigit < 9; ++secondDigit)
                 {
-                    if(i % n == 0)
+                    int sumDemoResult = firstDigit + secondDigit;
+                    for(int thirdDigit = 0; thirdDigit < 9; ++thirdDigit)
                     {
-                        Console.Write(i + ", ");
+                        int sum = sumDemoResult + thirdDigit;
+                        if (min <= sum && sum <= max)
+                            result++;
                     }
                 }
             }
+            Console.WriteLine(result);
             Console.ReadKey();
         }
     }
