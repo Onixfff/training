@@ -28,7 +28,9 @@ namespace sorting_numbers
                 {
                     if(baseArray[i] < baseArray[j])
                     {
-                        Swap(ref baseArray[j], ref baseArray[i]);
+                        int temp = baseArray[i];
+                        baseArray[i] = baseArray[j];
+                        baseArray[j] = temp;
                     }
                 }
             }
@@ -41,13 +43,6 @@ namespace sorting_numbers
             }
 
             Console.ReadKey();
-        }
-
-        static void Swap(ref int numberOne, ref int NumberTwo)
-        {
-            int temp = numberOne;
-            numberOne = NumberTwo;
-            NumberTwo = temp;
         }
 
         static int RandimizeNumber()

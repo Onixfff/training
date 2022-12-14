@@ -12,4 +12,19 @@ namespace DeckOfCards
         {
         }
     }
+
+    class Player
+    {
+        public Card cards { get; private set; }
+    }
+
+    class Deck
+    {
+
+    }
+
+    class Card
+    {
+        public 
+    }
 }
