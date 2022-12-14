@@ -23,18 +23,13 @@ namespace array_shift
             for(int j = shift; j > 0; j--)
             {
                 int startNumberArray = arrayNumbers[0];
-
-                for (int i = 0; i < arrayNumbers.Length; i++)
+                
+                for (int i = 0; i < arrayNumbers.Length - 1; i++)
                 {
-                    if (i == arrayNumbers.Length - 1)
-                    {
-                        arrayNumbers[i] = startNumberArray;
-                    }
-                    else
-                    {
                         arrayNumbers[i] = arrayNumbers[i + 1];
-                    }
                 }
+
+                arrayNumbers[arrayNumbers.Length - 1] = startNumberArray;
             }
 
             foreach (var item in arrayNumbers)
