@@ -10,27 +10,22 @@ namespace subarray_repeats_of_numbers
     {
         static void Main(string[] args)
         {
+            int[] baseArray = new int[30] { 0, 0, 0, 0, 0, 0, 0, 8, 9, 10, 11, 12, 5, 5, 5, 5, 5, 18, 19, 20, 21, 22, 6, 6, 6, 6, 6, 6, 6, 30 };
             int repeat = 0;
-            int? maxNumberRepeat = null;
-            int? maxRepeat = null;
-            int? number = null;
-            int[] baseArray = new int[30] { 0,0,0,0,0,0,0,8,9,10,11,12,5,5,5,5,5,18,19,20,21,22,6,6,6,6,6,6,6,30 };
+            int maxNumberRepeat = 0;
+            int maxRepeat = 0;
+            int number = baseArray[0];
 
             for(int i = 0; i < baseArray.Length; i++)
             {
                 Console.Write(baseArray[i]);
                 if (number != baseArray[i])
                 {
-                    if (repeat > maxRepeat || maxRepeat == null)
+                    if (repeat > maxRepeat)
                     {
                         maxNumberRepeat = number;
                         maxRepeat = repeat;
                     }
-                    number = baseArray[i];
-                    repeat = 1;
-                }
-                else if (number == null)
-                {
                     number = baseArray[i];
                     repeat = 1;
                 }
