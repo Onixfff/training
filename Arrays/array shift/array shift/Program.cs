@@ -21,7 +21,7 @@ namespace array_shift
             Console.Write("\nВведите сдвиг - ");
             int shift = Convert.ToInt32(Console.ReadLine());
             int temp = 0;
-            int startArray = 0;
+            int startNumberArray = 0;
 
             while (temp != shift)
             {
@@ -29,12 +29,12 @@ namespace array_shift
                 {
                     if (i == 0)
                     {
-                        startArray = arrayNumbers[i];
+                        startNumberArray = arrayNumbers[i];
                         arrayNumbers[i] = arrayNumbers[i + 1];
                     }
                     else if (i == arrayNumbers.Length - 1)
                     {
-                        arrayNumbers[i] = startArray;
+                        arrayNumbers[i] = startNumberArray;
                         temp++;
                     }
                     else
