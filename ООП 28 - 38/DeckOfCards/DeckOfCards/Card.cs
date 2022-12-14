@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace DeckOfCards
 {
-    class Program
+    class Card : baseCard
     {
-        static void Main(string[] args)
-        {
-
-        }
     }
 }
