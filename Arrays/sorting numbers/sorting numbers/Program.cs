@@ -9,6 +9,7 @@ namespace sorting_numbers
     class Program
     {
         static Random rnd = new Random();
+
         static void Main(string[] args)
         {
             int[] baseArray = new int[rnd.Next(10, 50)];
