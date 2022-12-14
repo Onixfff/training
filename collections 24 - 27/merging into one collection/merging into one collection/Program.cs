@@ -10,30 +10,43 @@ namespace merging_into_one_collection
     {
         static void Main(string[] args)
         {
-            string[] charsArrayTwo = new string[] { "2", "5", "6", "3" };
+            List<string> combinedCollection = null;
             string[] charsArrayOne = new string[] { "1", "2", "3", "4" };
-            List<string> combinedCollection = new List<string>(charsArrayOne);
+            string[] charsArrayTwo = new string[] { "2", "5", "6", "3" };
 
-            foreach (var item in combinedCollection)
-            {
-                Console.Write(item);
-            }
-
-            foreach (var item in charsArrayTwo)
-            {
-                bool check = combinedCollection.Contains(item);
-                if (check == false)
-                    combinedCollection.Add(item);
-            }
+            AddsArrayinCollection(ref combinedCollection, charsArrayOne);
+            AddsArrayinCollection(ref combinedCollection, charsArrayTwo);
 
             Console.WriteLine();
 
-            foreach (var item in combinedCollection)
+            ShowList(combinedCollection);
+
+            Console.ReadKey();
+        }
+
+        static void AddsArrayinCollection(ref List<string> combinedCollection, string[] array)
+        {
+            if(combinedCollection != null)
+            {
+                foreach (var item in array)
+                {
+                    bool isContains = combinedCollection.Contains(item);
+                    if (isContains == false)
+                        combinedCollection.Add(item);
+                }
+            }
+            else
+            {
+                combinedCollection = new List<string>(array);
+            }
+        }
+
+        static void ShowList(List<string> array)
+        {
+            foreach (var item in array)
             {
                 Console.Write(item);
             }
-
-            Console.ReadKey();
         }
     }
 }
