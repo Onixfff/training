@@ -8,11 +8,13 @@ namespace sorting_numbers
 {
     class Program
     {
-        static Random rnd = new Random();
+        static Random random = new Random();
 
         static void Main(string[] args)
         {
-            int[] baseArray = new int[rnd.Next(10, 50)];
+            int maxRandom = 10;
+            int minRandom = 50;
+            int[] baseArray = new int[random.Next(maxRandom, minRandom)];
 
             for (int i = 0; i < baseArray.Length; i++)
             {
@@ -20,14 +22,14 @@ namespace sorting_numbers
                 Console.Write(baseArray[i]);
             }
 
-            for (int i = 1; i < baseArray.Length; i++)
+            for(int i = 1; i < baseArray.Length; i++)
             {
-                int key = baseArray[i];
-                int j = i;
-                while ((j >= 1) && (baseArray[j - 1] > key))
+                for(int j = 0; j < baseArray.Length; j++)
                 {
-                    Swap(ref baseArray[j - 1], ref baseArray[j]);
-                    j--;
+                    if(baseArray[i] < baseArray[j])
+                    {
+                        Swap(ref baseArray[j], ref baseArray[i]);
+                    }
                 }
             }
 
@@ -50,7 +52,9 @@ namespace sorting_numbers
 
         static int RandimizeNumber()
         {
-            return rnd.Next(1, 10);
+            int minRandom = 1;
+            int maxRandom = 10;
+            return random.Next(minRandom, maxRandom);
         }
     }
 }
