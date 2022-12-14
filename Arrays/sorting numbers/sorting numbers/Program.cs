@@ -18,7 +18,7 @@ namespace sorting_numbers
 
             for (int i = 0; i < baseArray.Length; i++)
             {
-                baseArray[i] = RandimizeNumber();
+                baseArray[i] = GetRandomNumber();
                 Console.Write(baseArray[i]);
             }
 
@@ -45,7 +45,7 @@ namespace sorting_numbers
             Console.ReadKey();
         }
 
-        static int RandimizeNumber()
+        static int GetRandomNumber()
         {
             int minRandom = 1;
             int maxRandom = 10;
