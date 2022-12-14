@@ -11,9 +11,9 @@ namespace Split
         static void Main(string[] args)
         {
             string sentence = "Коля дунул в универе";
-            string[] sentenceSplit = sentence.Split();
+            string[] splitSentences = sentence.Split();
 
-            foreach (var item in sentenceSplit)
+            foreach (var item in splitSentences)
             {
                 Console.WriteLine(item);
             }
