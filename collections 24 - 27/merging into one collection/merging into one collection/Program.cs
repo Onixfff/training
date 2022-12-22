@@ -14,17 +14,14 @@ namespace merging_into_one_collection
             string[] charsArrayOne = new string[] { "1", "2", "3", "4" };
             string[] charsArrayTwo = new string[] { "2", "5", "6", "3" };
 
-            AddsArrayinCollection(ref combinedCollection, charsArrayOne);
-            AddsArrayinCollection(ref combinedCollection, charsArrayTwo);
-
+            AddsArrayinCollection(combinedCollection, charsArrayOne);
+            AddsArrayinCollection(combinedCollection, charsArrayTwo);
             Console.WriteLine();
-
             ShowList(combinedCollection);
-
             Console.ReadKey();
         }
 
-        static void AddsArrayinCollection(ref List<string> combinedCollection, string[] array)
+        static void AddsArrayinCollection(List<string> combinedCollection, string[] array)
         {
             if(combinedCollection != null)
             {
