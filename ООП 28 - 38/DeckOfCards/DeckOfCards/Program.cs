@@ -50,7 +50,7 @@ namespace DeckOfCards
         {
             foreach (Card card in _cards)
             {
-                card.ShowCard();
+                card.ShowStats();
             }
         }
 
@@ -97,7 +97,7 @@ namespace DeckOfCards
         {
             foreach(Card card in _cards)
             {
-                card.ShowCard();
+                card.ShowStats();
             }
         }
 
@@ -159,7 +159,7 @@ namespace DeckOfCards
             _armor += armor;
         }
 
-        public void ShowCard()
+        public void ShowStats()
         {
             Console.WriteLine($"Name Card - {name} HP - {_health} Damage - {damage} Armor - {_armor}");
         }
