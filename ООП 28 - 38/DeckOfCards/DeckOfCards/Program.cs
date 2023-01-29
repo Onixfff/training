@@ -130,17 +130,17 @@ namespace DeckOfCards
 
     class Card
     {
-        public string name { get; private set; }
-        public int damage { get; private set; }
+        private string _name;
+        private int _damage;
         private int _health;
         private int _armor;
 
         public Card(string name,int health, int armor, int damage)
         {
-            this.name = name;
+            _name = name;
             _health = health;
             _armor = armor;
-            this.damage = damage;
+            _damage = damage;
         }
 
         public void AcceptDamag(int damage)
@@ -161,7 +161,7 @@ namespace DeckOfCards
 
         public void ShowStats()
         {
-            Console.WriteLine($"Name Card - {name} HP - {_health} Damage - {damage} Armor - {_armor}");
+            Console.WriteLine($"Name Card - {_name} HP - {_health} Damage - {_damage} Armor - {_armor}");
         }
     }
 }
