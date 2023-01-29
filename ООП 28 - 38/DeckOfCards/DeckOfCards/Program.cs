@@ -17,12 +17,15 @@ namespace DeckOfCards
             Player player = new Player();
             desk.AddCards((List<Card>)createCards.GetCards());
             Console.WriteLine($"Кард в колоде осталось - {desk.Count()}\nСколько кард вытянуть из колоды?");
+
             if(int.TryParse(Console.ReadLine(), out userInput))
             {
                 if(desk.Count() >= userInput)
                     player.AddCards(desk.GetCards(userInput));
-                Console.WriteLine("Столько карт в колоде нету");
+                else
+                    Console.WriteLine("Столько карт в колоде нету");
             }
+
             Console.WriteLine("Ваши карты");
             player.ShowCards();
             Console.ReadKey();
