@@ -15,12 +15,12 @@ namespace DeckOfCards
             CreateCards createCards = new CreateCards();
             Desk desk = new Desk();
             Player player = new Player();
-            desk.AddCard(createCards.GetCards());
+            desk.AddCards((List<Card>)createCards.GetCards());
             Console.WriteLine($"Кард в колоде осталось - {desk.Count()}\nСколько кард вытянуть из колоды?");
             if(int.TryParse(Console.ReadLine(), out userInput))
             {
                 if(desk.Count() >= userInput)
-                    player.AddCard(desk.GetCard(userInput));
+                    player.AddCards(desk.GetCards(userInput));
                 Console.WriteLine("Столько карт в колоде нету");
             }
             Console.WriteLine("Ваши карты");
@@ -38,7 +38,7 @@ namespace DeckOfCards
             _cards.Add(card);
         }
 
-        public void AddCard(List<Card> card)
+        public void AddCards(List<Card> card)
         {
             _cards.AddRange(card);
         }
@@ -55,35 +55,29 @@ namespace DeckOfCards
 
     class CreateCards
     {
-        private List<Card> cards = new List<Card>();
-        private int _maxArmor = 6;
-        private int _minArmor = 0;
-        private int _maxDamage = 10;
-        private int _minDamage = 1;
-        private int _maxHealth = 15;
-        private int _minHealth = 8;
-        string[] cardNames = new string[31] { "Onella", "Meronalde", "Engoaaaaaa", "Zicarsoni", "Xiadne", "Waiti",
+        private Random _random = new Random();
+        private List<Card> _cards = new List<Card>();
+        private string[] _cardNames = new string[31] { "Onella", "Meronalde", "Engoaaaaaa", "Zicarsoni", "Xiadne", "Waiti",
             "Xolandiso", "Uarthurst", "Rahma", "Kordenz", "Goodysiaha", "Darylic","Wriggyan", "Vivann", "Ontaitle",
             "Hanthuonga", "Piscill", "Gertineenad", "Yxaaa", "Marghus", "Nyuaaaaaaa", "Joranchornt", "Ghtoneyah",
             "Onacoba", "Pedricia", "Ynleynard", "Tedriah", "Wiloha", "Nazand", "Shama", "Ximonar"};
 
-        Random rnd = new Random();
-
-        public CreateCards()
+        public CreateCards(int minArmor = 0, int maxArmor = 6, 
+            int minDamage = 1, int maxDamage = 10, int minHealth = 8, int maxHealth = 15)
         {
             for (int i = 0; i <= 30; i++)
             {
-                int health = rnd.Next(_minHealth, _maxHealth);
-                int armor = rnd.Next(_minArmor, _maxArmor);
-                int damage = rnd.Next(_minDamage, _maxDamage);
-                Card card = new Card(cardNames[i], health, armor, damage);
-                cards.Add(card);
+                int health = _random.Next(minHealth, maxHealth);
+                int armor = _random.Next(minArmor, maxArmor);
+                int damage = _random.Next(minDamage, maxDamage);
+                Card card = new Card(_cardNames[i], health, armor, damage);
+                _cards.Add(card);
             }
         }
 
-        public List<Card> GetCards()
+        public object GetCards()
         {
-            return cards;
+            return _cards;
         }
     }
 
@@ -104,9 +98,9 @@ namespace DeckOfCards
             }
         }
 
-        public void AddCard(List<Card> cards)
+        public void AddCards(List<Card> cards)
         {
-            _cards = cards;
+            _cards.AddRange(cards);
         }
 
         public void AddCard(Card card)
@@ -124,7 +118,7 @@ namespace DeckOfCards
             return _cards.First();
         }
 
-        public List<Card> GetCard(int userInput)
+        public List<Card> GetCards(int userInput)
         {
             int index = 0;
             return _cards.GetRange(index, userInput);
@@ -134,9 +128,9 @@ namespace DeckOfCards
     class Card
     {
         public string name { get; private set; }
+        public int damage { get; private set; }
         private int _health;
         private int _armor;
-        public int damage { get; private set; }
 
         public Card(string name,int health, int armor, int damage)
         {
@@ -146,7 +140,7 @@ namespace DeckOfCards
             this.damage = damage;
         }
 
-        public void Acceptdamag(int damage)
+        public void AcceptDamag(int damage)
         {
             if(damage > _armor)
                 _health = _health - (damage - _armor);
