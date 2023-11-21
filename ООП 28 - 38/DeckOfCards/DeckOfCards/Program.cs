@@ -10,7 +10,7 @@ namespace DeckOfCards
     {
         static void Main(string[] args)
         {
-            CardDeck MainCardDeck = new CardDeck(new CreateMainCards().CreateStartCart());
+            CardDeck MainCardDeck = new CardDeck(new CreateMainCards().CreateStartCarts());
             
             List<Player> players = new List<Player>()
             {
@@ -211,8 +211,8 @@ namespace DeckOfCards
 
     public class Card
     {
-        public readonly CardSuit cardSuit;
-        public readonly CardRang cardRang;
+        private CardSuit cardSuit;
+        private CardRang cardRang;
 
         public Card(CardSuit CardSuit, CardRang CardRang)
         {
