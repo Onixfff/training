@@ -169,7 +169,7 @@ namespace DeckOfCards
 
     public class CreateMainCards
     {
-        public List<Card> CreateStartCart()
+        public List<Card> CreateStartCarts()
         {
             List<Card> cards = new List<Card>();
             int maxCardsRang = (int)CardRang.Ace;
