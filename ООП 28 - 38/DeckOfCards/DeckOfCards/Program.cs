@@ -6,162 +6,248 @@ using System.Threading.Tasks;
 
 namespace DeckOfCards
 {
-
     class Program
     {
         static void Main(string[] args)
         {
-            int userInput;
-            CreateCards createCards = new CreateCards();
-            Desk desk = new Desk();
-            Player player = new Player();
-            desk.AddCards((List<Card>)createCards.GetCards());
-            Console.WriteLine($"Кард в колоде осталось - {desk.Count()}\nСколько кард вытянуть из колоды?");
-
-            if(int.TryParse(Console.ReadLine(), out userInput))
+            CardDeck MainCardDeck = new CardDeck(new CreateMainCards().CreateStartCart());
+            
+            List<Player> players = new List<Player>()
             {
-                if(desk.Count() >= userInput)
-                    player.AddCards(desk.GetCards(userInput));
-                else
-                    Console.WriteLine("Столько карт в колоде нету");
-            }
+                new Player(new CardDeck(new List<Card>()), "Player1"),
+                new Player(new CardDeck(new List<Card>()), "Player2")
+            };
 
-            Console.WriteLine("Ваши карты");
-            player.ShowCards();
-            Console.ReadKey();
+            Menu menu = new Menu();
+
+            int player;
+            int maxPlayers;
+            if (players.Count > 0)
+            {
+                player = 0;
+                maxPlayers = players.Count;
+                while (true)
+                {
+                    Console.WriteLine($"Игрок - {players[player]._nickName}" +
+                        $"\nВаши возможности:" +
+                        $"\n1.Добавить карту" +
+                        $"\n2.Показать карты" +
+                        $"\n3.Закончить ход");
+
+                    string userInput = Console.ReadLine().ToString();
+                    menu = (Menu)(Convert.ToInt32(userInput) - 1);
+
+                    switch (menu)
+                    {
+                        case Menu.addCard:
+                            Console.Clear();
+                            Card card = MainCardDeck.GetRandomCard();
+                            
+                            if (card == null)
+                            {
+                                Console.WriteLine("Карт в колоде больше нету");
+                            }
+                            else
+                            {
+                                players[player].AddCard(card);
+                                MainCardDeck.DeliteCard(card);
+                            }
+                            break;
+                        case Menu.ShowCard:
+                            Console.Clear();
+                            players[player].ShowCards();
+                            Console.WriteLine();
+                            break;
+                        case Menu.End:
+                            Console.Clear();
+                            player++;
+                            if (player >= maxPlayers)
+                            {
+                                player = 0;
+                            }
+                            break;
+                        default:
+                            Console.WriteLine("Такого пунка меню нету");
+                            break;
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Должен быть хотябы 1 игрок");
+            }
         }
     }
 
-    class Player
+    public enum Menu
+    {
+        addCard,
+        ShowCard,
+        End
+    }
+
+    public class Player
+    {
+        public readonly string _nickName;
+        private CardDeck _cardDeck;
+
+        public Player(CardDeck cardDeck, string nickName)
+        {
+            _nickName = nickName;
+            _cardDeck = cardDeck;
+        }
+
+        public void AddCard(Card card)
+        {
+            _cardDeck.AddCard(card);
+        }
+
+        public void ShowCards()
+        {
+            Console.WriteLine($"Карты игрока - {_nickName}:");
+            _cardDeck.ShowCards();
+        }
+    }
+
+    public class CardDeck
     {
         private List<Card> _cards = new List<Card>();
+
+        public CardDeck(List<Card> cards)
+        {
+            this._cards = cards;
+        }
+
+        public void DeliteCard(Card card)
+        {
+            if(_cards.Count > 0)
+                _cards.Remove(card);
+        }
 
         public void AddCard(Card card)
         {
             _cards.Add(card);
         }
 
-        public void AddCards(List<Card> card)
-        {
-            _cards.AddRange(card);
-        }
-
         public void ShowCards()
         {
-            foreach (Card card in _cards)
+            if (_cards.Count > 0)
             {
-                card.ShowStats();
+                foreach (var card in _cards)
+                {
+                    card.ShowCard();
+                }
             }
+            else
+            {
+                Console.WriteLine("Карт нету");
+            }
+        }
+
+        public int ShowCountCards() => _cards.Count;
+
+        public Card GetRandomCard()
+        {
+            Random random = new Random();
+            int minRandom = 0;
+            int maxRandom = _cards.Count;
+            if (_cards.Count <= 0)
+                return null;
+            Card card = _cards[random.Next(minRandom, maxRandom)];
+
+            if (card != null)
+            {
+                return card;
+            }
+            else
+            {
+                Console.WriteLine("В колоде больше нету карт");
+                return null;
+            }
+        }
+    }
+
+    public class CreateMainCards
+    {
+        public List<Card> CreateStartCart()
+        {
+            List<Card> cards = new List<Card>();
+            int maxCardsRang = (int)CardRang.Ace;
+            int maxCardSuit = (int)CardSuit.spades;
+            CardSuit cardSuit = CardSuit.clubs;
+
+            for(int i = 0; i <= maxCardsRang ; i++)
+            {
+                for (int j = 0; j <= maxCardSuit; j++)
+                {
+                    cards.Add(new Card(cardSuit, (CardRang)i));
+
+                    switch (cardSuit)
+                    {
+                        case CardSuit.clubs:
+                            cardSuit = CardSuit.diamonds;
+                            break;
+                        case CardSuit.diamonds:
+
+                            cardSuit = CardSuit.hearts;
+                            break;
+                        case CardSuit.hearts:
+
+                            cardSuit = CardSuit.spades;
+                            break;
+                        case CardSuit.spades:
+
+                            cardSuit = CardSuit.clubs;
+                            break;
+                    }
+                }
+            }
+            if(cards != null && cards.Count > 0)
+                return cards;
+            else
+                return null;
+        }
+    }
+
+    public class Card
+    {
+        public readonly CardSuit cardSuit;
+        public readonly CardRang cardRang;
+
+        public Card(CardSuit CardSuit, CardRang CardRang)
+        {
+            cardSuit = CardSuit;
+            cardRang = CardRang;
+        }
+
+        public void ShowCard()
+        {
+            Console.WriteLine($"Масть - {cardSuit} ---  Ранг - {cardRang}");
         }
 
     }
 
-    class CreateCards
+    public enum CardSuit
     {
-        private Random _random = new Random();
-        private List<Card> _cards = new List<Card>();
-        private string[] _cardNames = new string[31] { "Onella", "Meronalde", "Engoaaaaaa", "Zicarsoni", "Xiadne", "Waiti",
-            "Xolandiso", "Uarthurst", "Rahma", "Kordenz", "Goodysiaha", "Darylic","Wriggyan", "Vivann", "Ontaitle",
-            "Hanthuonga", "Piscill", "Gertineenad", "Yxaaa", "Marghus", "Nyuaaaaaaa", "Joranchornt", "Ghtoneyah",
-            "Onacoba", "Pedricia", "Ynleynard", "Tedriah", "Wiloha", "Nazand", "Shama", "Ximonar"};
-
-        public CreateCards(int minArmor = 0, int maxArmor = 6, 
-            int minDamage = 1, int maxDamage = 10, int minHealth = 8, int maxHealth = 15)
-        {
-            for (int i = 0; i <= 30; i++)
-            {
-                int health = _random.Next(minHealth, maxHealth);
-                int armor = _random.Next(minArmor, maxArmor);
-                int damage = _random.Next(minDamage, maxDamage);
-                Card card = new Card(_cardNames[i], health, armor, damage);
-                _cards.Add(card);
-            }
-        }
-
-        public object GetCards()
-        {
-            return _cards;
-        }
+        clubs, // Трефы 
+        diamonds, // Бубны 
+        hearts, // Червы 
+        spades // Пики 
     }
 
-    class Desk
+    public enum CardRang
     {
-        private List<Card> _cards = new List<Card>();
-
-        public int Count()
-        {
-            return _cards.Count();
-        }
-
-        public void ShowCards()
-        {
-            foreach(Card card in _cards)
-            {
-                card.ShowStats();
-            }
-        }
-
-        public void AddCards(List<Card> cards)
-        {
-            _cards.AddRange(cards);
-        }
-
-        public void AddCard(Card card)
-        {
-            _cards.Add(card);
-        }
-
-        public void DeleteCard(Card card)
-        {
-            _cards.Remove(card);
-        }
-
-        public Card GetCard()
-        {
-            return _cards.First();
-        }
-
-        public List<Card> GetCards(int userInput)
-        {
-            int index = 0;
-            return _cards.GetRange(index, userInput);
-        }
-    }
-
-    class Card
-    {
-        private string _name;
-        private int _damage;
-        private int _health;
-        private int _armor;
-
-        public Card(string name,int health, int armor, int damage)
-        {
-            _name = name;
-            _health = health;
-            _armor = armor;
-            _damage = damage;
-        }
-
-        public void AcceptDamag(int damage)
-        {
-            if(damage > _armor)
-                _health = _health - (damage - _armor);
-        }
-
-        public void Treatment(int healing)
-        {
-            _health += healing;
-        }
-
-        public void TakingArmor(int armor)
-        {
-            _armor += armor;
-        }
-
-        public void ShowStats()
-        {
-            Console.WriteLine($"Name Card - {_name} HP - {_health} Damage - {_damage} Armor - {_armor}");
-        }
+        two,
+        three,
+        four,
+        five,
+        six,
+        seven,
+        nine,
+        ten,
+        Jack,
+        Lady,
+        King,
+        Ace
     }
 }
