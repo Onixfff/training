@@ -1,70 +1,65 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 namespace DeckOfCards
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-            CardDeck MainCardDeck = new CardDeck(new CreateMainCards().CreateStartCarts());
-            
-            List<Player> players = new List<Player>()
+        private static Deck MainCardDeck = new Deck(new CreateMain().CreateStartCards());
+
+        private static List<Player> players = new List<Player>()
             {
-                new Player(new CardDeck(new List<Card>()), "Player1"),
-                new Player(new CardDeck(new List<Card>()), "Player2")
+                new Player("Player1", new List<Card>()),
+                new Player("Player2", new List<Card>())
             };
 
-            Menu menu = new Menu();
+        private static int player = 0;
 
-            int player;
-            int maxPlayers;
+        private static int maxPlayers;
+
+        static void Main(string[] args)
+        {
+            Menu menu = new Menu();
+            int menuIndex = 0;
+
             if (players.Count > 0)
             {
                 player = 0;
                 maxPlayers = players.Count;
+                MainCardDeck.Shuffles();
+
                 while (true)
                 {
-                    Console.WriteLine($"Игрок - {players[player]._nickName}" +
+                    bool result = false;
+
+                    while (!result)
+                    {
+                        Console.WriteLine($"Игрок - {players[player]._nickName}" +
                         $"\nВаши возможности:" +
                         $"\n1.Добавить карту" +
                         $"\n2.Показать карты" +
                         $"\n3.Закончить ход");
 
-                    string userInput = Console.ReadLine().ToString();
-                    menu = (Menu)(Convert.ToInt32(userInput) - 1);
+                        string userInput = Console.ReadLine().ToString();
+                        result = int.TryParse(userInput, out menuIndex);
+                        Console.Clear();
+                    }
+
+                    menu = (Menu)menuIndex - 1;
 
                     switch (menu)
                     {
                         case Menu.addCard:
-                            Console.Clear();
-                            Card card = MainCardDeck.GetRandomCard();
-                            
-                            if (card == null)
-                            {
-                                Console.WriteLine("Карт в колоде больше нету");
-                            }
-                            else
-                            {
-                                players[player].AddCard(card);
-                                MainCardDeck.DeliteCard(card);
-                            }
+                            AddCard();
                             break;
                         case Menu.ShowCard:
-                            Console.Clear();
-                            players[player].ShowCards();
-                            Console.WriteLine();
+                            ShowCards();
                             break;
                         case Menu.End:
-                            Console.Clear();
-                            player++;
-                            if (player >= maxPlayers)
-                            {
-                                player = 0;
-                            }
+                            End();
                             break;
                         default:
                             Console.WriteLine("Такого пунка меню нету");
@@ -75,6 +70,34 @@ namespace DeckOfCards
             else
             {
                 Console.WriteLine("Должен быть хотябы 1 игрок");
+            }
+        }
+
+        private static void AddCard()
+        {
+            Console.Clear();
+            Card card = MainCardDeck.GetFirstCard();
+            players[player].AddCard(card);
+            MainCardDeck.DeliteCard(card);
+            if (card == null)
+                Console.WriteLine("Карт в колоде больше нету");
+        }
+
+        private static void ShowCards() 
+        {
+            Console.Clear();
+            players[player].ShowCards();
+            Console.WriteLine();
+        }
+
+        private static void End()
+        {
+            Console.Clear();
+            player++;
+
+            if (player >= maxPlayers)
+            {
+                player = 0;
             }
         }
     }
@@ -89,38 +112,43 @@ namespace DeckOfCards
     public class Player
     {
         public readonly string _nickName;
-        private CardDeck _cardDeck;
+        private List<Card> _cards;
 
-        public Player(CardDeck cardDeck, string nickName)
+        public Player(string nickName, List<Card> cards)
         {
             _nickName = nickName;
-            _cardDeck = cardDeck;
+            this._cards = cards;
         }
 
         public void AddCard(Card card)
         {
-            _cardDeck.AddCard(card);
+            _cards.Add(card);
+            List<Card> cards = _cards.ToList();
+            _cards = cards;
         }
 
         public void ShowCards()
         {
             Console.WriteLine($"Карты игрока - {_nickName}:");
-            _cardDeck.ShowCards();
+            foreach (var card in _cards)
+            {
+                card.Show();
+            }
         }
     }
 
-    public class CardDeck
+    public class Deck
     {
         private List<Card> _cards = new List<Card>();
 
-        public CardDeck(List<Card> cards)
+        public Deck(List<Card> cards)
         {
             this._cards = cards;
         }
 
         public void DeliteCard(Card card)
         {
-            if(_cards.Count > 0)
+            if (_cards.Count > 0)
                 _cards.Remove(card);
         }
 
@@ -129,13 +157,18 @@ namespace DeckOfCards
             _cards.Add(card);
         }
 
+        public List<Card> GetCards()
+        {
+            return _cards;
+        }
+
         public void ShowCards()
         {
             if (_cards.Count > 0)
             {
                 foreach (var card in _cards)
                 {
-                    card.ShowCard();
+                    card.Show();
                 }
             }
             else
@@ -144,64 +177,45 @@ namespace DeckOfCards
             }
         }
 
-        public int ShowCountCards() => _cards.Count;
-
-        public Card GetRandomCard()
+        public void Shuffles()
         {
             Random random = new Random();
-            int minRandom = 0;
-            int maxRandom = _cards.Count;
-            if (_cards.Count <= 0)
-                return null;
-            Card card = _cards[random.Next(minRandom, maxRandom)];
 
-            if (card != null)
+            for (int i = _cards.Count - 1; i >= 1; i--)
             {
-                return card;
+                int j = random.Next(i + 1);
+                var temp = _cards[j];
+                _cards[j] = _cards[i];
+                _cards[i] = temp;
             }
+        }
+
+        public Card GetFirstCard()
+        {
+            if (_cards.Count != 0)
+                return _cards[0];
             else
-            {
-                Console.WriteLine("В колоде больше нету карт");
                 return null;
-            }
         }
     }
 
-    public class CreateMainCards
+    public class CreateMain
     {
-        public List<Card> CreateStartCarts()
+        public List<Card> CreateStartCards()
         {
             List<Card> cards = new List<Card>();
-            int maxCardsRang = (int)CardRang.Ace;
-            int maxCardSuit = (int)CardSuit.spades;
-            CardSuit cardSuit = CardSuit.clubs;
+            int countRangs = Rang.rang.Count;
+            int maxCardSuit = Suit.suit.Count;
+            string cardSuit = Suit.suit[0];
 
-            for(int i = 0; i <= maxCardsRang ; i++)
+            for(int i = 0; i < countRangs ; i++)
             {
-                for (int j = 0; j <= maxCardSuit; j++)
+                for (int j = 0; j < maxCardSuit; j++)
                 {
-                    cards.Add(new Card(cardSuit, (CardRang)i));
-
-                    switch (cardSuit)
-                    {
-                        case CardSuit.clubs:
-                            cardSuit = CardSuit.diamonds;
-                            break;
-                        case CardSuit.diamonds:
-
-                            cardSuit = CardSuit.hearts;
-                            break;
-                        case CardSuit.hearts:
-
-                            cardSuit = CardSuit.spades;
-                            break;
-                        case CardSuit.spades:
-
-                            cardSuit = CardSuit.clubs;
-                            break;
-                    }
+                    cards.Add(new Card(Suit.suit[j], Rang.rang[i]));
                 }
             }
+
             if(cards != null && cards.Count > 0)
                 return cards;
             else
@@ -211,43 +225,29 @@ namespace DeckOfCards
 
     public class Card
     {
-        private CardSuit cardSuit;
-        private CardRang cardRang;
+        private string _suit;
+        private string _rang;
 
-        public Card(CardSuit CardSuit, CardRang CardRang)
+        public Card(string suit, string rang)
         {
-            cardSuit = CardSuit;
-            cardRang = CardRang;
+            _suit = suit;
+            _rang = rang;
         }
 
-        public void ShowCard()
+        public void Show()
         {
-            Console.WriteLine($"Масть - {cardSuit} ---  Ранг - {cardRang}");
+            Console.WriteLine($"{_rang}{_suit}");
         }
 
     }
 
-    public enum CardSuit
+    public static class Rang
     {
-        clubs, // Трефы 
-        diamonds, // Бубны 
-        hearts, // Червы 
-        spades // Пики 
+        public static readonly List<string> rang = new List<string> { "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "D", "K", "A" };
     }
 
-    public enum CardRang
+    public static class Suit
     {
-        two,
-        three,
-        four,
-        five,
-        six,
-        seven,
-        nine,
-        ten,
-        Jack,
-        Lady,
-        King,
-        Ace
+        public static readonly List<string> suit = new List<string> { "♠", "♣", "♦", "♥" };
     }
 }
