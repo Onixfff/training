@@ -20,6 +20,13 @@ namespace DeckOfCards
 
         private static int _maxPlayers;
 
+        private enum Menu
+        {
+            addCard,
+            ShowCard,
+            End
+        }
+
         static void Main(string[] args)
         {
             Menu menu = new Menu();
@@ -106,13 +113,6 @@ namespace DeckOfCards
                 _player = 0;
             }
         }
-    }
-
-    public enum Menu
-    {
-        addCard,
-        ShowCard,
-        End
     }
 
     public class Player
