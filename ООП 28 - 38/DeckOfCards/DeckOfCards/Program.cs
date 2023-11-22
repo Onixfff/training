@@ -33,9 +33,9 @@ namespace DeckOfCards
 
                 while (true)
                 {
-                    bool result = false;
+                    bool resultParse = false;
 
-                    while (!result)
+                    while (!resultParse)
                     {
                         Console.WriteLine($"Игрок - {_players[_player]._nickName}" +
                         $"\nВаши возможности:" +
@@ -44,7 +44,7 @@ namespace DeckOfCards
                         $"\n3.Закончить ход");
 
                         string userInput = Console.ReadLine().ToString();
-                        result = int.TryParse(userInput, out menuIndex);
+                        resultParse = int.TryParse(userInput, out menuIndex);
                         Console.Clear();
                     }
 
