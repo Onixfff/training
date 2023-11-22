@@ -6,30 +6,30 @@ using System.Runtime.InteropServices;
 
 namespace DeckOfCards
 {
-    class Program
+    public class Program
     {
-        private static Deck MainCardDeck = new Deck(new CreateMain().CreateStartCards());
+        private static Deck _mainCardDeck = new Deck(new CreateMain().CreateStartCards());
 
-        private static List<Player> players = new List<Player>()
+        private static List<Player> _players = new List<Player>()
             {
                 new Player("Player1", new List<Card>()),
                 new Player("Player2", new List<Card>())
             };
 
-        private static int player = 0;
+        private static int _player = 0;
 
-        private static int maxPlayers;
+        private static int _maxPlayers;
 
         static void Main(string[] args)
         {
             Menu menu = new Menu();
             int menuIndex = 0;
 
-            if (players.Count > 0)
+            if (_players.Count > 0)
             {
-                player = 0;
-                maxPlayers = players.Count;
-                MainCardDeck.Shuffles();
+                _player = 0;
+                _maxPlayers = _players.Count;
+                _mainCardDeck.Shuffles();
 
                 while (true)
                 {
@@ -37,7 +37,7 @@ namespace DeckOfCards
 
                     while (!result)
                     {
-                        Console.WriteLine($"Игрок - {players[player]._nickName}" +
+                        Console.WriteLine($"Игрок - {_players[_player]._nickName}" +
                         $"\nВаши возможности:" +
                         $"\n1.Добавить карту" +
                         $"\n2.Показать карты" +
@@ -76,28 +76,34 @@ namespace DeckOfCards
         private static void AddCard()
         {
             Console.Clear();
-            Card card = MainCardDeck.GetFirstCard();
-            players[player].AddCard(card);
-            MainCardDeck.DeliteCard(card);
-            if (card == null)
-                Console.WriteLine("Карт в колоде больше нету");
+            Card card = _mainCardDeck.GetFirstCard();
+            
+            if (card != null)
+            {
+                _players[_player].AddCard(card);
+                _mainCardDeck.DeliteCard(card);
+            }
+            else
+            {
+                Console.WriteLine("Карт в колоде больше нету\n");
+            }
         }
 
         private static void ShowCards() 
         {
             Console.Clear();
-            players[player].ShowCards();
+            _players[_player].ShowCards();
             Console.WriteLine();
         }
 
         private static void End()
         {
             Console.Clear();
-            player++;
+            _player++;
 
-            if (player >= maxPlayers)
+            if (_player >= _maxPlayers)
             {
-                player = 0;
+                _player = 0;
             }
         }
     }
@@ -149,7 +155,9 @@ namespace DeckOfCards
         public void DeliteCard(Card card)
         {
             if (_cards.Count > 0)
+            {
                 _cards.Remove(card);
+            }
         }
 
         public void AddCard(Card card)
@@ -184,7 +192,7 @@ namespace DeckOfCards
             for (int i = _cards.Count - 1; i >= 1; i--)
             {
                 int j = random.Next(i + 1);
-                var temp = _cards[j];
+                Card temp = _cards[j];
                 _cards[j] = _cards[i];
                 _cards[i] = temp;
             }
@@ -206,9 +214,8 @@ namespace DeckOfCards
             List<Card> cards = new List<Card>();
             int countRangs = Rang.rang.Count;
             int maxCardSuit = Suit.suit.Count;
-            string cardSuit = Suit.suit[0];
 
-            for(int i = 0; i < countRangs ; i++)
+            for (int i = 0; i < countRangs; i++)
             {
                 for (int j = 0; j < maxCardSuit; j++)
                 {
@@ -216,10 +223,14 @@ namespace DeckOfCards
                 }
             }
 
-            if(cards != null && cards.Count > 0)
+            if (cards != null && cards.Count > 0)
+            {
                 return cards;
+            }
             else
+            {
                 return null;
+            }
         }
     }
 
