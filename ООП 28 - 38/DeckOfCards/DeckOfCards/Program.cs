@@ -212,14 +212,14 @@ namespace DeckOfCards
         public List<Card> CreateStartCards()
         {
             List<Card> cards = new List<Card>();
-            int countRangs = Rang.rang.Count;
-            int maxCardSuit = Suit.suit.Count;
+            int countRangs = Rang.rangs.Count;
+            int maxCardSuit = Suit.suits.Count;
 
             for (int i = 0; i < countRangs; i++)
             {
                 for (int j = 0; j < maxCardSuit; j++)
                 {
-                    cards.Add(new Card(Suit.suit[j], Rang.rang[i]));
+                    cards.Add(new Card(Suit.suits[j], Rang.rangs[i]));
                 }
             }
 
@@ -254,11 +254,11 @@ namespace DeckOfCards
 
     public static class Rang
     {
-        public static readonly List<string> rang = new List<string> { "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "D", "K", "A" };
+        public static readonly List<string> rangs = new List<string> { "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "D", "K", "A" };
     }
 
     public static class Suit
     {
-        public static readonly List<string> suit = new List<string> { "♠", "♣", "♦", "♥" };
+        public static readonly List<string> suits = new List<string> { "♠", "♣", "♦", "♥" };
     }
 }
